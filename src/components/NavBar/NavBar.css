@@ -1,0 +1,15 @@
+.navbar {
+    padding: 1%;
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.navbar .element {
+    margin: 1% 4%;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
