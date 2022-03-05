@@ -23,8 +23,8 @@ function CompanyDataRow(props) {
                 <p className={priceChangeStyleValue}>{props.ptsChange}({props.percentageChange}%)</p>
         </div>
 
-        <BuySellButton type="buy"/>
-        <BuySellButton type="sell"/>
+        <BuySellButton type="buy" company={props.company}/>
+        <BuySellButton type="sell" company={props.company}/>
         <AddToWatchlist/>
     </div>
   )
