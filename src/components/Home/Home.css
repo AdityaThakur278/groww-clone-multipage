@@ -1,0 +1,21 @@
+.home-page {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stock-data-area {
+    width: 60%;
+}
+
+.buy-sell-form-area {
+    padding-top: 7%;
+    width: 35%;
+}
+
+.buy-sell-form-wrapper {
+    position: fixed; 
+    width: 24%;
+}

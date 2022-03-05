@@ -1,0 +1,21 @@
+.home-page .company-row {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+
+.home-page .company-row:hover {
+  background-color: #e5faf5;
+}
+
+.home-page .change-pos {
+  padding-top: 1%;
+  font-size: 13px;
+  color: #00d09c;
+}
+
+.home-page .change-neg {
+  padding-top: 1%;
+  font-size: 13px;
+  color: red;
+}
