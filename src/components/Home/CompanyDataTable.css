@@ -1,17 +1,17 @@
 /* Top by Market Cap - NIFTY-50 */
 .home-page .heading {
-  padding: 4% 0;
+  padding: 0 0 3% 0;
   display: flex;
   justify-content: start;
 }
 .top-heading {
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.7rem;
   padding-right: 1%;
 }
 .nifty {
   color: gray;
-  padding-top: 2%;
+  padding-top: 1%;
 }
 
 .home-page .table {

@@ -5,6 +5,8 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    /* position: fixed;
+    margin-left: 15%; */
 }
 
 .navbar .element {

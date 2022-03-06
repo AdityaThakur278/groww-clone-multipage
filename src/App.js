@@ -4,7 +4,7 @@ import {Routes, Route} from "react-router-dom"
 import NoMatch from "./components/NoMatch";
 import NavBar from "./components/NavBar/NavBar";
 import "./App.css"
-import Transantions from "./components/Transactions/Transantions";
+import Transantions from "./components/Transactions/Transactions";
 import Watchlist from "./components/Watchlist/Watchlist";
 import Portfolio from "./components/Portfolio/Portfolio";
 

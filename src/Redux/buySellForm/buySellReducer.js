@@ -30,7 +30,6 @@ const reducer = (state = initialState, action) => {
                 shareQuantityValue: action.payload,
             }
         case "TARGET_PRICE_CHANGE":
-            console.log(action.payload)
             return {
                 ...state,
                 targetPrice: action.payload,

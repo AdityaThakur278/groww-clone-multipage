@@ -1,14 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CompanyDataRow from "./CompanyDataRow";
 import "./CompanyDataTable.css";
 import { connect } from "react-redux";
-import { fetchStockData } from "../../Redux/stockData/stockDataAction";
 
 function CompanyDataTable(props) {
-	useEffect(() => {
-		setTimeout(() => props.fetchStockData(), 3000);
-	}, []);
-
 	const data = props.data;
 
 	return (
@@ -68,10 +63,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		fetchStockData: () => dispatch(fetchStockData()),
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CompanyDataTable);
+export default connect(mapStateToProps, null)(CompanyDataTable);
