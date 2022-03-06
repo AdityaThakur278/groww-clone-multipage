@@ -10,6 +10,13 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 pendingTransaction: [action.payload, ...state.pendingTransaction],
             }
+        case "DELETE_PENDING_TRANSACTION":
+            return {
+                ...state,
+                pendingTransaction: state.pendingTransaction.filter((_, index) => {
+                    return index !== action.payload
+                })
+            }
         default:
             return state;
     }

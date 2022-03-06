@@ -7,10 +7,10 @@ function Transantions(props) {
     return (
         <div className='transactions-container'>
             <div className='pending-transaction'>
-                <TransactionTable type="Pending" transactionArray={props.pendingTransaction}/>
+                <TransactionTable type="Pending" transactionArray={props.pendingTransaction} cancel={true}/>
             </div>
             <div className='complete-transaction'>
-                <TransactionTable type="Complete" transactionArray={props.completeTransaction}/>
+                <TransactionTable type="Complete" transactionArray={props.completeTransaction} cancel={false}/>
             </div>
         </div>
     )

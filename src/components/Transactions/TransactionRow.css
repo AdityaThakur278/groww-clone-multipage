@@ -12,7 +12,9 @@
 .transactions-container .transaction-type-sell {
   width: 10%;
   padding: 2% 1.5%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .transactions-container .transaction-type-buy {

@@ -31,6 +31,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 mapCompanyToIndex: action.payload,
             }
+        case "TOGGLE_WATCHLIST":
+            return {
+                ...state,
+                data: action.payload,
+            }
         default:
             return state;   
     }

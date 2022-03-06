@@ -1,9 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-function Watchlist() {
-  return (
-    <h2>Watchlist Page</h2>
-  )
+function Watchlist(props) {
+	return (
+		<>
+			{
+				props.watchlistCompany.map(name => <h3 key={name}>{name}</h3>)
+			}
+		</>
+	);
 }
 
-export default Watchlist
+const mapStateToProps = (state) => {
+	return {
+		watchlistCompany: state.watchlist.watchlistCompany
+	}
+} 
+
+export default connect(mapStateToProps, null)(Watchlist) 

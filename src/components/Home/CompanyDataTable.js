@@ -38,9 +38,10 @@ function CompanyDataTable(props) {
 								</div>
 							)
 							: (
-								data.map(obj => {
+								data.map((obj, index) => {
 									return <CompanyDataRow 
 												key={obj.company} 
+												index={index}
 												company={obj.company} 
 												ltp={obj.ltp} 
 												ptsChange={obj.ptsChange} 

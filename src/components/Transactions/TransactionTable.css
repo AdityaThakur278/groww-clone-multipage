@@ -33,29 +33,11 @@
   .transactions-container .company-name,
   .transactions-container .target-price,
   .transactions-container .quantity,
-  .transactions-container .total {
+  .transactions-container .total,
+  .transactions-container .cancel {  
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .transactions-container .company-name {
-    width: 32%;
-    padding: 2% 1.5%;
-  }
-  
-  .transactions-container .target-price {
-    width: 23%;
-    padding: 2% 1.5%;
-  }
-  
-  .transactions-container .quantity {
-    width: 13%;
-    padding: 2% 1.5%;
-  }
-  
-  .transactions-container .total {
-    width: 22%;
     padding: 2% 1.5%;
   }
   

@@ -28,6 +28,13 @@ export const mapCompanyToIndex = (payload) => {
     }
 }
 
+export const toggleWatchlist = (payload) => {
+    return {
+        type: "TOGGLE_WATCHLIST",
+        payload,
+    }
+}
+
 export const fetchStockData = () => {
     return function(dispatch) {
         dispatch(fetchStockDataStart());
@@ -41,6 +48,9 @@ export const fetchStockData = () => {
                 const mapObject = {}
                 data.forEach(function(obj, index) {
                     mapObject[obj.company] = index
+
+                    // Adding new property for watchlistFunctionality
+                    data[index].watchlist = false
                 });
                 dispatch(mapCompanyToIndex(mapObject))
 

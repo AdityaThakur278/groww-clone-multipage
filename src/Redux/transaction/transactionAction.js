@@ -4,3 +4,10 @@ export const addToPendingTransaction = (payload) => {
         payload,
     }
 }
+
+export const deletePendingTransaction = (payload) => {
+    return {
+        type: "DELETE_PENDING_TRANSACTION",
+        payload
+    }
+}
