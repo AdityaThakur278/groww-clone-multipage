@@ -1,20 +1,21 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import BuySellForm from '../BuySellForm/BuySellForm';
+import CompanyDataTable from './CompanyDataTable';
+import "./Watchlist.css"
 
 function Watchlist(props) {
 	return (
-		<>
-			{
-				props.watchlistCompany.map(name => <h3 key={name}>{name}</h3>)
-			}
-		</>
+		<div className="watchlist-page">
+			<div className="stock-data-area">
+				<CompanyDataTable/>
+			</div>
+			<div className="buy-sell-form-area">
+				<div className="buy-sell-form-wrapper">
+					<BuySellForm/>
+				</div>
+			</div>	
+		</div>
 	);
 }
 
-const mapStateToProps = (state) => {
-	return {
-		watchlistCompany: state.watchlist.watchlistCompany
-	}
-} 
-
-export default connect(mapStateToProps, null)(Watchlist) 
+export default Watchlist

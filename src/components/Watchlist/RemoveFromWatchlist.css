@@ -1,0 +1,7 @@
+.delete-button {
+    transition: 0.7s;
+}
+
+.delete-button:hover {
+    transform: scale(1.2);
+}

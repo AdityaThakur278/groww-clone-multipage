@@ -1,0 +1,60 @@
+.watchlist-page .heading {
+    padding: 0 0 3% 0;
+    display: flex;
+    justify-content: start;
+  }
+.watchlist-page  .top-heading {
+    font-weight: 400;
+    font-size: 1.7rem;
+    padding-right: 1%;
+  }
+
+  .watchlist-page .table {
+    box-shadow: 1px 1px 3px 3px #e6e6e6;
+  }
+  
+  .watchlist-page .table-heading {
+    display: flex;
+    flex-direction: row;
+    background-color: #e6e6e6;
+    font-size: 14px;
+    color: #44475b;
+    width: 100%;
+  }
+  
+  .watchlist-page .company {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    padding: 2% 1.5%;
+    padding-left: 3%;
+  }
+  
+  .watchlist-page .market-price {
+    width: 25%;
+    padding: 2% 1.5%;
+  }
+  
+  .watchlist-page .buy {
+    width: 15%;
+    padding: 2% 1.5%;
+    text-align: center;
+  }
+  
+  .watchlist-page .sell {
+    width: 15%;
+    padding: 2% 1.5%;
+    text-align: center;
+  }
+  
+  .watchlist-page .remove {
+    width: 15%;
+    padding: 2% 1.5%;
+    text-align: center;
+  }
+  
+  .watchlist-page .no-data {
+      text-align: center;
+      font-size: 1.5rem;
+      padding: 5% 0;
+  }

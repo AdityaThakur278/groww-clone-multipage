@@ -1,0 +1,21 @@
+.watchlist-page {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.watchlist-page .stock-data-area {
+    width: 60%;
+}
+
+.watchlist-page .buy-sell-form-area {
+    padding-top: 5%;
+    width: 35%;
+}
+
+.watchlist-page .buy-sell-form-wrapper {
+    position: fixed; 
+    width: 24%;
+}

@@ -14,20 +14,20 @@ function priceChangeStyle(value) {
 
 function CompanyDataRow(props) {
     const priceChangeStyleValue = priceChangeStyle(props.percentageChange);
-  return (
-    <div className="company-row">
-        <p className="company">{props.company}</p>
+    return (
+        <div className="company-row">
+            <p className="company">{props.company}</p>
 
-        <div className="market-price">
-                <p className="price">₹{props.ltp}</p>
-                <p className={priceChangeStyleValue}>{props.ptsChange}({props.percentageChange}%)</p>
+            <div className="market-price">
+                    <p className="price">₹{props.ltp}</p>
+                    <p className={priceChangeStyleValue}>{props.ptsChange}({props.percentageChange}%)</p>
+            </div>
+
+            <BuySellButton type="buy" company={props.company}/>
+            <BuySellButton type="sell" company={props.company}/>
+            <AddToWatchlist company={props.company} index={props.index}/>
         </div>
-
-        <BuySellButton type="buy" company={props.company}/>
-        <BuySellButton type="sell" company={props.company}/>
-        <AddToWatchlist company={props.company} index={props.index}/>
-    </div>
-  )
+    )
 }
 
 export default CompanyDataRow
