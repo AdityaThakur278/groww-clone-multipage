@@ -1,6 +1,5 @@
 import React from 'react'
 import AddToWatchlist from './AddToWatchlist'
-import BuySellButton from './BuySellButton'
 import "./CompanyDataRow.css"
 
 function priceChangeStyle(value) {
@@ -23,8 +22,6 @@ function CompanyDataRow(props) {
                     <p className={priceChangeStyleValue}>{props.ptsChange}({props.percentageChange}%)</p>
             </div>
 
-            <BuySellButton type="buy" company={props.company}/>
-            <BuySellButton type="sell" company={props.company}/>
             <AddToWatchlist company={props.company} index={props.index}/>
         </div>
     )

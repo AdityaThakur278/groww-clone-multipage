@@ -17,8 +17,6 @@ function CompanyDataTable(props) {
 				<div className="table-heading">
 					<p className="company">Company</p>
 					<p className="market-price">Market Price</p>
-					<p className="buy">Buy</p>
-					<p className="sell">Sell</p>
 					<p className="watchlist">Watchlist</p>
 				</div>
 

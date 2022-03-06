@@ -21,6 +21,8 @@ function BuySellTransaction(props) {
             quantity: props.shareQuantity,
             total: totalAmount.toFixed(2),
         })
+
+        alert("Transaction added to pending transaction list");
     }
 
     function buySellTransaction() {

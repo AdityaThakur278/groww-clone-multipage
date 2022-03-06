@@ -7,15 +7,6 @@
 }
 
 .stock-data-area {
-    width: 60%;
+    width: 45%;
 }
 
-.buy-sell-form-area {
-    padding-top: 5%;
-    width: 35%;
-}
-
-.buy-sell-form-wrapper {
-    position: fixed; 
-    width: 24%;
-}

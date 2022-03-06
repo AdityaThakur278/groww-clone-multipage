@@ -30,30 +30,19 @@
 .home-page .company {
   display: flex;
   align-items: center;
-  width: 30%;
+  width: 40%;
   padding: 2% 1.5%;
-  padding-left: 3%;
+  padding-left: 6%;
 }
 
 .home-page .market-price {
-  width: 25%;
-  padding: 2% 1.5%;
-}
-
-.home-page .buy {
-  width: 15%;
-  padding: 2% 1.5%;
-  text-align: center;
-}
-
-.home-page .sell {
-  width: 15%;
+  width: 40%;
   padding: 2% 1.5%;
   text-align: center;
 }
 
 .home-page .watchlist {
-  width: 15%;
+  width: 20%;
   padding: 2% 1.5%;
   text-align: center;
 }

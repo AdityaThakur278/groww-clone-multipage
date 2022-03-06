@@ -25,8 +25,8 @@ function NavBar(props) {
             </div>
             <div className='remaining-element'>
                 <NavLink style={navLinkStyle} className="element" to="/">Home</NavLink>
-                <NavLink style={navLinkStyle} className="element" to="/transactions">Transactions</NavLink>
                 <NavLink style={navLinkStyle} className="element" to="/watchlist">Watchlist</NavLink>
+                <NavLink style={navLinkStyle} className="element" to="/transactions">Transactions</NavLink>
                 <NavLink style={navLinkStyle} className="element" to="/portfolio">Portfolio</NavLink>
             </div>
         </nav>
