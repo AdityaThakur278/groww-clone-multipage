@@ -11,3 +11,10 @@ export const deletePendingTransaction = (payload) => {
         payload
     }
 }
+
+export const addToCompleteTransaction = (payload) => {
+    return {
+        type: "ADD_TO_COMPLETE_TRANSACTION",
+        payload,
+    }
+}

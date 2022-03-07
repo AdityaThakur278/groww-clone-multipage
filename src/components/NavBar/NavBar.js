@@ -1,15 +1,37 @@
 import React, {useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import "./NavBar.css"
-import { fetchStockData } from "../../Redux/stockData/stockDataAction";
+import { fetchStockData, updateStockData } from "../../Redux/stockData/stockDataAction";
 import { connect } from 'react-redux';
+import { checkPendingTransactions } from '../checkPendingTransactions';
+import { addToCompleteTransaction, deletePendingTransaction } from "../../Redux/transaction/transactionAction"
+import { addToAssets } from "../../Redux/assets/assetsActions"
 
 function NavBar(props) {
 
     // Fetching data here to solve re-rendering issue
+    // Call fetchStockData on 1st render, then updateStockData on further renders
     useEffect(() => {
-		setTimeout(() => props.fetchStockData(), 3000);
-	}, []);
+        setTimeout(() => {
+            props.fetchStockData();
+
+            setInterval(() => {
+                props.updateStockData();
+            }, 3000);
+        }, 3000);
+    }, [])
+ 
+    useEffect(() => {
+        checkPendingTransactions(
+            props.data,
+            props.mapCompanyToIndex,
+            props.pendingTransaction,
+            props.walletBalance,
+            props.addToCompleteTransaction,
+            props.addToAssets,
+            props.deletePendingTransaction,
+        );
+    }, [props.data])
 
     const navLinkStyle = ({ isActive }) => {
         return {
@@ -33,10 +55,24 @@ function NavBar(props) {
     );
 }
 
+const mapStateToProps = (state) => {
+    return {
+        data: state.stockData.data,
+        mapCompanyToIndex: state.stockData.mapCompanyToIndex,
+        pendingTransaction: state.transaction.pendingTransaction,
+        loading: state.stockData.loading,
+        walletBalance: state.wallet.balance,
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchStockData: () => dispatch(fetchStockData()),
-	};
+        updateStockData: (data, mapCompanyToIndex) => dispatch(updateStockData(data, mapCompanyToIndex)),
+        addToCompleteTransaction: transaction => dispatch(addToCompleteTransaction(transaction)),
+        addToAssets: (company, transactionDetail) => dispatch(addToAssets(company, transactionDetail)),
+        deletePendingTransaction: (index) => dispatch(deletePendingTransaction(index)),
+    };
 };
 
-export default connect(null, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

@@ -7,9 +7,9 @@ function BuySellTransaction(props) {
 
     function buyTransaction() {
         const totalAmount = parseFloat(props.shareQuantity) * parseFloat(props.targetPrice);
-        const walletAmount = parseFloat(props.walletAmount);
+        const walletBalance = parseFloat(props.walletBalance);
 
-        if(totalAmount > walletAmount) {
+        if(totalAmount > walletBalance) {
             alert("Wallet balance is not enough!!")
             return;
         }
@@ -27,7 +27,7 @@ function BuySellTransaction(props) {
 
     function buySellTransaction() {
 
-        if(props.buySellCompany === "Loading...") return;
+        if(props.buySellCompany === "Select Company") return;
 
         if(props.buyTab) {
             buyTransaction();
@@ -50,7 +50,7 @@ function BuySellTransaction(props) {
 const mapStateToProps = (state) => {
     return {
         buyTab: state.buySellForm.buyTab,
-        walletAmount: state.wallet.amount,
+        walletBalance: state.wallet.balance,
         shareQuantity: state.buySellForm.shareQuantityValue,
         targetPrice: state.buySellForm.targetPrice,
         buySellCompany: state.buySellForm.buySellCompany,

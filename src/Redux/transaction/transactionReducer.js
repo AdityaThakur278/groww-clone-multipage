@@ -17,6 +17,11 @@ const reducer = (state=initialState, action) => {
                     return index !== action.payload
                 })
             }
+        case "ADD_TO_COMPLETE_TRANSACTION":
+            return {
+                ...state,
+                completeTransaction: [action.payload, ...state.completeTransaction],
+            }
         default:
             return state;
     }

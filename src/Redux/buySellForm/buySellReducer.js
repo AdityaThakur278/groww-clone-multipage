@@ -1,5 +1,5 @@
 const initialState = {
-    buySellCompany: "Loading...",
+    buySellCompany: "Select Company",
     buyTab: true,
     marketPriceValue: null,
     shareQuantityValue: 0,

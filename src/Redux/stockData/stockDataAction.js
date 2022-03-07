@@ -1,5 +1,5 @@
 import axios from "axios"
-import {buySellCompanyChange, marketPriceValueChange} from "../buySellForm/buySellAction"
+import store from "../store"
 
 export const fetchStockDataStart = () => {
     return {
@@ -42,7 +42,6 @@ export const fetchStockData = () => {
         axios.get("mock/indiaStocks.json")
             .then(response => {
                 const data = response.data.data;
-                dispatch(fetchStockDataSuccess(data))
 
                 // MapCompanyToIndex
                 const mapObject = {}
@@ -52,14 +51,38 @@ export const fetchStockData = () => {
                     // Adding new property for watchlistFunctionality
                     data[index].watchlist = false
                 });
+                
+                dispatch(fetchStockDataSuccess(data))
                 dispatch(mapCompanyToIndex(mapObject))
-
-                // Load BuySellForm on first render
-                dispatch(buySellCompanyChange(data[0].company))
-                dispatch(marketPriceValueChange(data[0].ltp))
             })
             .catch(error => {
                 dispatch(fetchStockDataError(error.message))
             })
     }   
+}
+
+export const updateStockData = () => {
+    return function(dispatch) {
+        axios.get("mock/indiaStocks.json")
+            .then(response => {
+                const data = response.data.data;
+
+                // Store previous watchlist status and MapCompanyToIndex
+                const prevData = store.getState().stockData.data;
+                const prevMapCompanyToIndex = store.getState().stockData.mapCompanyToIndex;
+                const mapObject = {};
+                for(let i=0; i<data.length; i++) {
+                    const company = data[i].company;
+                    const index = prevMapCompanyToIndex[company];
+                    const watchlist = prevData[index].watchlist;
+                    data[i].watchlist = watchlist;
+
+                    // MapCompanyToIndex
+                    mapObject[company] = i;
+                }
+
+                dispatch(fetchStockDataSuccess(data))
+                dispatch(mapCompanyToIndex(mapObject))
+            });
+    }
 }
