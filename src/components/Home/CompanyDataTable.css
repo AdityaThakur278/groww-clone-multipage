@@ -14,11 +14,11 @@
   padding-top: 1%;
 }
 
-.home-page .table {
+.stock-data-area .table {
   box-shadow: 1px 1px 3px 3px #e6e6e6;
 }
 
-.home-page .table-heading {
+.stock-data-area .table-heading {
   display: flex;
   flex-direction: row;
   background-color: #e6e6e6;
@@ -27,7 +27,7 @@
   width: 100%;
 }
 
-.home-page .company {
+.stock-data-area .company {
   display: flex;
   align-items: center;
   width: 40%;
@@ -35,13 +35,13 @@
   padding-left: 6%;
 }
 
-.home-page .market-price {
+.stock-data-area .market-price {
   width: 40%;
   padding: 2% 1.5%;
   text-align: center;
 }
 
-.home-page .watchlist {
+.stock-data-area .watchlist {
   width: 20%;
   padding: 2% 1.5%;
   text-align: center;

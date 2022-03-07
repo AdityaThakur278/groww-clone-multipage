@@ -22,7 +22,7 @@ function CompanyDataRow(props) {
                     <p className={priceChangeStyleValue}>{props.ptsChange}({props.percentageChange}%)</p>
             </div>
 
-            <AddToWatchlist company={props.company} index={props.index}/>
+            <AddToWatchlist width={{width: "20%"}} company={props.company} index={props.index}/>
         </div>
     )
 }

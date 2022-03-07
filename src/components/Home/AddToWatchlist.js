@@ -25,7 +25,7 @@ function AddToWatchlist(props) {
 	}
 
     return (
-		<p className="watchlist">
+		<p style={props.width} className="watchlist">
 			<img 
 				className="watchlist-button" 
 				width="30px" 

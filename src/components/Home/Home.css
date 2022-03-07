@@ -1,17 +1,76 @@
 .home-page {
-    width: 70%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .stock-data-area {
-    width: 45%;
+  width: 45%;
 }
 
 .right-side {
-    padding-top: 5%;
-    padding-right: 5%;
+  padding-top: 4%;
+  margin-left: 5%;
+  width: 50%;
 }
 
+.right-side-wrapper {
+  position: fixed;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+}
+
+.investment-detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+}
+
+.investment-detail .card {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.asset-table {
+  overflow-y: scroll;
+  flex: 1 1 auto;
+  width: 80%;
+  margin: auto;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.asset-table::-webkit-scrollbar {
+  width: 0.43rem;
+}
+
+.asset-table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.asset-table::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.asset-table::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.asset-table .heading {
+    display: flex;
+    flex-direction: row;
+    padding: 4%;
+}
+
+.asset-table .heading-name {
+    font-size: 1.4rem;
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+}

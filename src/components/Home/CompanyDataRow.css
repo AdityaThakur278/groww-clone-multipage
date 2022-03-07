@@ -1,20 +1,20 @@
-.home-page .company-row {
+.stock-data-area .company-row {
   display: flex;
   flex-direction: row;
   font-size: 15px;
 }
 
-.home-page .company-row:hover {
+.stock-data-area .company-row:hover {
   background-color: #e5faf5;
 }
 
-.home-page .change-pos {
+.stock-data-area .change-pos {
   padding-top: 1%;
   font-size: 13px;
   color: #00d09c;
 }
 
-.home-page .change-neg {
+.stock-data-area .change-neg {
   padding-top: 1%;
   font-size: 13px;
   color: red;
