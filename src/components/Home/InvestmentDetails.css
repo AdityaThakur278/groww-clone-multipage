@@ -1,0 +1,80 @@
+.investment-detail {
+  flex: 0 1 auto;
+}
+
+.investment-detail .investment-detail-top {
+  display: flex;
+  flex-direction: row;
+}
+
+.investment-detail .top-card {
+  width: 30.33%;
+  padding: 3% 1.5%;
+  margin: 3% 1.5%;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+  display: flex;
+  justify-content: center;
+}
+
+.investment-detail .investment-detail-bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.investment-detail .wallet-balance {
+  width: 47.33%;
+  padding: 3% 1.5%;
+  margin: 3% 1.5%;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.investment-detail .wallet-transactions {
+  width: 47.33%;
+  padding: 3% 1.5%;
+  margin: 3% 1.5%;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.investment-detail .withdraw-msg {
+  text-align: center;
+}
+
+.investment-detail .transaction-button {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 3%;
+}
+
+.investment-detail .wallet-add-button {
+  background-color: #00d09c;
+  border: none;
+  color: white;
+  border-radius: 8%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.7s;
+  padding: 3%;
+}
+
+.investment-detail .wallet-add-button:hover {
+  transform: scale(1.2);
+}
+
+.investment-detail .wallet-withdraw-button {
+  background-color: #e34234;
+  border: none;
+  color: white;
+  border-radius: 8%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.7s;
+  padding: 3%;
+}
+
+.investment-detail .wallet-withdraw-button:hover {
+  transform: scale(1.2);
+}

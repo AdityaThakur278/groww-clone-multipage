@@ -23,26 +23,12 @@
   height: 85%;
 }
 
-.investment-detail {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 0 1 auto;
-}
-
-.investment-detail .card {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-}
-
 .asset-table {
   overflow-y: scroll;
   flex: 1 1 auto;
   width: 80%;
   margin: auto;
+  margin-top: 2.5%;
   box-shadow: 1px 1px 3px 3px #e6e6e6;
 }
 
