@@ -3,6 +3,14 @@ import "./BuySellButton.css"
 import {buySellCompanyChange, buyTabChange, marketPriceValueChange} from "../../Redux/buySellForm/buySellAction"
 import { connect } from 'react-redux';
 
+const getCompanyIndex = (stocksData, company) => {
+    for(let i=0; i<stocksData.length; i++) {
+        if(stocksData[i].company === company) {
+            return i;
+        }
+    }
+}
+
 function BuySellButton(props) {
     const buttonStyle = props.type + "-button";
     const innerHtml = props.type.charAt(0).toUpperCase();
@@ -11,7 +19,7 @@ function BuySellButton(props) {
         props.buySellCompanyChange(props.company);
         props.type === "buy" ? props.buyTabChange(true) : props.buyTabChange(false);
 
-        const index = props.mapCompanyToIndex[props.company];
+        const index = getCompanyIndex(props.stocksData, props.company);
         const marketPrice = props.stocksData[index].ltp;
         props.marketPriceValueChange(marketPrice)
     }
@@ -26,7 +34,6 @@ function BuySellButton(props) {
 const mapStateToProps = (state) => {
     return {
         stocksData: state.stockData.stocksData,
-        mapCompanyToIndex: state.stockData.mapCompanyToIndex,
     }
 }
 

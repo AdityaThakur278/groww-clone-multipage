@@ -21,13 +21,6 @@ export const fetchStockDataError = (payload) => {
     }
 }
 
-export const mapCompanyToIndex = (payload) => {
-    return {
-        type: "MAP_COMPANY_TO_INDEX",
-        payload
-    }
-}
-
 export const toggleWatchlist = (payload) => {
     return {
         type: "TOGGLE_WATCHLIST",
@@ -43,17 +36,12 @@ export const fetchStockData = () => {
             .then(response => {
                 const stocksData = response.data.data;
 
-                // MapCompanyToIndex
-                const mapObject = {}
                 stocksData.forEach(function(obj, index) {
-                    mapObject[obj.company] = index
-
                     // Adding new property for watchlistFunctionality
                     stocksData[index].watchlist = false
                 });
                 
                 dispatch(fetchStockDataSuccess(stocksData))
-                dispatch(mapCompanyToIndex(mapObject))
             })
             .catch(error => {
                 dispatch(fetchStockDataError(error.message))
@@ -67,22 +55,24 @@ export const updateStockData = () => {
             .then(response => {
                 const stocksData = response.data.data;
 
-                // Store previous watchlist status and MapCompanyToIndex
+                // Store previous watchlist status 
                 const prevData = store.getState().stockData.stocksData;
-                const prevMapCompanyToIndex = store.getState().stockData.mapCompanyToIndex;
-                const mapObject = {};
                 for(let i=0; i<stocksData.length; i++) {
                     const company = stocksData[i].company;
-                    const index = prevMapCompanyToIndex[company];
+                    const index = getCompanyIndex(prevData, company);
                     const watchlist = prevData[index].watchlist;
                     stocksData[i].watchlist = watchlist;
-
-                    // MapCompanyToIndex
-                    mapObject[company] = i;
                 }
 
                 dispatch(fetchStockDataSuccess(stocksData))
-                dispatch(mapCompanyToIndex(mapObject))
             });
+    }
+}
+
+const getCompanyIndex = (stocksData, company) => {
+    for(let i=0; i<stocksData.length; i++) {
+        if(stocksData[i].company === company) {
+            return i;
+        }
     }
 }

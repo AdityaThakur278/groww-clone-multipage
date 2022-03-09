@@ -1,7 +1,14 @@
+const getCompanyIndex = (stocksData, company) => {
+    for(let i=0; i<stocksData.length; i++) {
+        if(stocksData[i].company === company) {
+            return i;
+        }
+    }
+}
+
 // Call from NavBar.js
 export const checkPendingTransactions = (
-    data,
-    mapCompanyToIndex,
+    stocksData,
     pendingTransaction,
     walletBalance,
     addToCompleteTransaction,
@@ -17,8 +24,8 @@ export const checkPendingTransactions = (
         const quantity = pendingTransaction[i].quantity;
         const total = parseFloat(pendingTransaction[i].total);
 
-        const index = mapCompanyToIndex[company];
-        const currentPrice = parseFloat(data[index].ltp);
+        const index = getCompanyIndex(stocksData, company);
+        const currentPrice = parseFloat(stocksData[index].ltp);
 
         if(targetPrice >= currentPrice && total <= walletBalance && type === "B") {
             buyTransactionSuccessful(i, company, targetPrice, quantity, total, addToCompleteTransaction, addToAssets, deletePendingTransaction, withdrawFromWallet);

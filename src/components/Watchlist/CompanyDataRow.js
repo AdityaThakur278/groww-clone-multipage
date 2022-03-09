@@ -4,6 +4,14 @@ import BuySellButton from './BuySellButton';
 import "./CompanyDataRow.css"
 import RemoveFromWatchlist from './RemoveFromWatchlist';
 
+const getCompanyIndex = (stocksData, company) => {
+    for(let i=0; i<stocksData.length; i++) {
+        if(stocksData[i].company === company) {
+            return i;
+        }
+    }
+}
+
 function priceChangeStyle(value) {
     if(parseFloat(value) < 0) {
         return "change-neg";
@@ -16,7 +24,7 @@ function priceChangeStyle(value) {
 function CompanyDataRow(props) {
     const company = props.company;
     const stocksData = props.stocksData;
-    const index = props.mapCompanyToIndex[company];
+    const index = getCompanyIndex(props.stocksData, props.company);
     const ltp = stocksData[index].ltp;
     const ptsChange = stocksData[index].ptsChange;
     const percentageChange = stocksData[index].percentageChange;
@@ -41,7 +49,6 @@ function CompanyDataRow(props) {
 const mapStateToProps = (state) => {
     return {
         stocksData: state.stockData.stocksData,
-        mapCompanyToIndex: state.stockData.mapCompanyToIndex,
     }
 }
 

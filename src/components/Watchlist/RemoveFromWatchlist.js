@@ -5,10 +5,18 @@ import {removeFromWatchlist} from "../../Redux/watchlist/watchlistActions"
 import { toggleWatchlist } from '../../Redux/stockData/stockDataAction'
 import { connect } from 'react-redux'
 
+const getCompanyIndex = (stocksData, company) => {
+    for(let i=0; i<stocksData.length; i++) {
+        if(stocksData[i].company === company) {
+            return i;
+        }
+    }
+}
+
 function RemoveFromWatchlist(props) {
 
     function handleButtonClick() {
-        const index = props.mapCompanyToIndex[props.company];
+        const index = getCompanyIndex(props.stocksData, props.company);
 		const watchlistCondition = props.stocksData[index].watchlist;
 		const shallowCopyData = [...props.stocksData];
 		shallowCopyData[index] = {...shallowCopyData[index], watchlist: !watchlistCondition};
@@ -33,7 +41,6 @@ function RemoveFromWatchlist(props) {
 const mapStateToProps = (state) => {
 	return {
 		stocksData: state.stockData.stocksData,
-        mapCompanyToIndex: state.stockData.mapCompanyToIndex
 	}
 }
 
