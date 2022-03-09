@@ -19,7 +19,7 @@ function InvestmentDetails(props) {
             <div className="investment-detail-bottom">
                 <div className="wallet-balance">
                     <p>Wallet Balance</p>
-                    <p>₹{props.walletBalance}</p>
+                    <p className="wallet-balance-amount">₹{props.walletBalance}</p>
                 </div>
                 <div className="wallet-transactions">
                     <p className="withdraw-msg">Add/Withdraw from wallet</p>

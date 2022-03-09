@@ -7,6 +7,7 @@ export const checkPendingTransactions = (
     addToCompleteTransaction,
     addToAssets,
     deletePendingTransaction,
+    withdrawFromWallet,
     ) => {
 
     for(let i=pendingTransaction.length-1; i>=0; i--) {
@@ -20,7 +21,7 @@ export const checkPendingTransactions = (
         const currentPrice = parseFloat(data[index].ltp);
 
         if(targetPrice >= currentPrice && total <= walletBalance && type === "B") {
-            buyTransactionSuccessful(i, company, targetPrice, quantity, total, addToCompleteTransaction, addToAssets, deletePendingTransaction);
+            buyTransactionSuccessful(i, company, targetPrice, quantity, total, addToCompleteTransaction, addToAssets, deletePendingTransaction, withdrawFromWallet);
         }
     }
 }
@@ -33,7 +34,8 @@ function buyTransactionSuccessful(
     total, 
     addToCompleteTransaction,
     addToAssets,
-    deletePendingTransaction) {
+    deletePendingTransaction,
+    withdrawFromWallet) {
 
     addToCompleteTransaction({
         type: "B",
@@ -51,4 +53,6 @@ function buyTransactionSuccessful(
     })
 
     deletePendingTransaction(index);
+
+    withdrawFromWallet(total)
 }

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { checkPendingTransactions } from '../checkPendingTransactions';
 import { addToCompleteTransaction, deletePendingTransaction } from "../../Redux/transaction/transactionAction"
 import { addToAssets } from "../../Redux/assets/assetsActions"
+import { withdrawFromWallet } from "../../Redux/wallet/walletActions"
 
 function NavBar(props) {
 
@@ -30,6 +31,7 @@ function NavBar(props) {
             props.addToCompleteTransaction,
             props.addToAssets,
             props.deletePendingTransaction,
+            props.withdrawFromWallet,
         );
     }, [props.data])
 
@@ -72,6 +74,7 @@ const mapDispatchToProps = (dispatch) => {
         addToCompleteTransaction: transaction => dispatch(addToCompleteTransaction(transaction)),
         addToAssets: (company, transactionDetail) => dispatch(addToAssets(company, transactionDetail)),
         deletePendingTransaction: (index) => dispatch(deletePendingTransaction(index)),
+        withdrawFromWallet: (amount) => dispatch(withdrawFromWallet(amount)),
     };
 };
 

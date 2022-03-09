@@ -32,6 +32,11 @@
   justify-content: space-evenly;
 }
 
+.investment-detail .wallet-balance-amount {
+    font-weight: 700;
+    color: #00d09c;
+}
+
 .investment-detail .wallet-transactions {
   width: 47.33%;
   padding: 3% 1.5%;
@@ -53,7 +58,7 @@
   background-color: #00d09c;
   border: none;
   color: white;
-  border-radius: 8%;
+  border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
   transition: 0.7s;
@@ -68,7 +73,7 @@
   background-color: #e34234;
   border: none;
   color: white;
-  border-radius: 8%;
+  border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
   transition: 0.7s;

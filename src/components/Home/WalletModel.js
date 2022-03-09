@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import "./WalletModel.css"
+import { addToWallet, withdrawFromWallet } from "../../Redux/wallet/walletActions"
 
 function WalletModel(props) {
+
+    const [amountInput, setAmountInput] = useState(0)
 
     const addTabStyle = props.addTab ? "selected" : "";
     const withdrawTabStyle = props.withdrawTab ? "selected" : "";
@@ -17,6 +20,24 @@ function WalletModel(props) {
             props.setAddTab(false);
             props.setWithdrawTab(true);
         }
+    }
+
+    function handleWalletTransaction() {
+        if(addTabStyle) {
+            props.addToWallet(amountInput);
+            alert("Amount added successfully");
+        }
+        else if(withdrawTabStyle) {
+
+            if(parseFloat(props.balance) < parseFloat(amountInput)) {
+                alert("Not enough balance!");
+                return;
+            }
+            props.withdrawFromWallet(amountInput);
+            alert("Amount withdrawn successfully");
+        }
+
+        props.setWalletModel(false);
     }
 
     return (
@@ -50,14 +71,14 @@ function WalletModel(props) {
                         className="add-withdraw-amt-input" 
                         type="text" 
                         name="amount" 
-                        value={"100"}
-                        onChange={() => {}}
+                        value={amountInput}
+                        onChange={(e) => setAmountInput(e.target.value)}
                     />
                 </div>
 
                 <div className="add-withdraw-cancel-button">
                     <button className="cancel-button" onClick={() => props.setWalletModel(false)}>Cancel</button>
-                    <button className="add-withdraw-button">{addWithdrawButton}</button>
+                    <button className="add-withdraw-button" onClick={handleWalletTransaction}>{addWithdrawButton}</button>
                 </div>
             </div>
         </div>
@@ -70,4 +91,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(WalletModel)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToWallet: (amount) => dispatch(addToWallet(amount)),
+        withdrawFromWallet: (amount) => dispatch(withdrawFromWallet(amount)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WalletModel)
