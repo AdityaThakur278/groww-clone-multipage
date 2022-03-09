@@ -15,11 +15,11 @@ function priceChangeStyle(value) {
 
 function CompanyDataRow(props) {
     const company = props.company;
-    const data = props.data;
+    const stocksData = props.stocksData;
     const index = props.mapCompanyToIndex[company];
-    const ltp = data[index].ltp;
-    const ptsChange = data[index].ptsChange;
-    const percentageChange = data[index].percentageChange;
+    const ltp = stocksData[index].ltp;
+    const ptsChange = stocksData[index].ptsChange;
+    const percentageChange = stocksData[index].percentageChange;
     const priceChangeStyleValue = priceChangeStyle(props.percentageChange);
     
     return (
@@ -40,7 +40,7 @@ function CompanyDataRow(props) {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.stockData.data,
+        stocksData: state.stockData.stocksData,
         mapCompanyToIndex: state.stockData.mapCompanyToIndex,
     }
 }

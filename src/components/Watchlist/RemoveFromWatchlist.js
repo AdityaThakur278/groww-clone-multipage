@@ -9,8 +9,8 @@ function RemoveFromWatchlist(props) {
 
     function handleButtonClick() {
         const index = props.mapCompanyToIndex[props.company];
-		const watchlistCondition = props.data[index].watchlist;
-		const shallowCopyData = [...props.data];
+		const watchlistCondition = props.stocksData[index].watchlist;
+		const shallowCopyData = [...props.stocksData];
 		shallowCopyData[index] = {...shallowCopyData[index], watchlist: !watchlistCondition};
 		props.toggleWatchlist(shallowCopyData)
 
@@ -32,7 +32,7 @@ function RemoveFromWatchlist(props) {
 
 const mapStateToProps = (state) => {
 	return {
-		data: state.stockData.data,
+		stocksData: state.stockData.stocksData,
         mapCompanyToIndex: state.stockData.mapCompanyToIndex
 	}
 }
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         removeFromWatchlist: company => dispatch(removeFromWatchlist(company)),
-        toggleWatchlist: data => dispatch(toggleWatchlist(data)),
+        toggleWatchlist: stocksData => dispatch(toggleWatchlist(stocksData)),
     }
 }
 

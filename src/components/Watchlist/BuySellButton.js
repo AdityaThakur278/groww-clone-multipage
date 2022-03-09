@@ -12,7 +12,7 @@ function BuySellButton(props) {
         props.type === "buy" ? props.buyTabChange(true) : props.buyTabChange(false);
 
         const index = props.mapCompanyToIndex[props.company];
-        const marketPrice = props.data[index].ltp;
+        const marketPrice = props.stocksData[index].ltp;
         props.marketPriceValueChange(marketPrice)
     }
 
@@ -25,7 +25,7 @@ function BuySellButton(props) {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.stockData.data,
+        stocksData: state.stockData.stocksData,
         mapCompanyToIndex: state.stockData.mapCompanyToIndex,
     }
 }

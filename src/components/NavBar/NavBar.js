@@ -24,7 +24,7 @@ function NavBar(props) {
  
     useEffect(() => {
         checkPendingTransactions(
-            props.data,
+            props.stocksData,
             props.mapCompanyToIndex,
             props.pendingTransaction,
             props.walletBalance,
@@ -33,7 +33,7 @@ function NavBar(props) {
             props.deletePendingTransaction,
             props.withdrawFromWallet,
         );
-    }, [props.data])
+    }, [props.stocksData])
 
     const navLinkStyle = ({ isActive }) => {
         return {
@@ -59,7 +59,7 @@ function NavBar(props) {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.stockData.data,
+        stocksData: state.stockData.stocksData,
         mapCompanyToIndex: state.stockData.mapCompanyToIndex,
         pendingTransaction: state.transaction.pendingTransaction,
         loading: state.stockData.loading,
@@ -70,7 +70,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchStockData: () => dispatch(fetchStockData()),
-        updateStockData: (data, mapCompanyToIndex) => dispatch(updateStockData(data, mapCompanyToIndex)),
+        updateStockData: (stocksData, mapCompanyToIndex) => dispatch(updateStockData(stocksData, mapCompanyToIndex)),
         addToCompleteTransaction: transaction => dispatch(addToCompleteTransaction(transaction)),
         addToAssets: (company, transactionDetail) => dispatch(addToAssets(company, transactionDetail)),
         deletePendingTransaction: (index) => dispatch(deletePendingTransaction(index)),

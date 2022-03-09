@@ -1,6 +1,6 @@
 const initialState = {
     loading: true,
-    data: [],
+    stocksData: [],
     error: "",
     mapCompanyToIndex: {}
 }
@@ -16,14 +16,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                data: action.payload,
+                stocksData: action.payload,
                 error: ""
             }
         case "FETCH_STOCK_DATA_ERROR":
             return {
                 ...state,
                 loading: false,
-                data: [],
+                stocksData: [],
                 error: action.payload
             }
         case "MAP_COMPANY_TO_INDEX":
@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
         case "TOGGLE_WATCHLIST":
             return {
                 ...state,
-                data: action.payload,
+                stocksData: action.payload,
             }
         default:
             return state;   

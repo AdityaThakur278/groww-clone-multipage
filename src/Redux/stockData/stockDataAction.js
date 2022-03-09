@@ -41,18 +41,18 @@ export const fetchStockData = () => {
 
         axios.get("mock/indiaStocks.json")
             .then(response => {
-                const data = response.data.data;
+                const stocksData = response.data.data;
 
                 // MapCompanyToIndex
                 const mapObject = {}
-                data.forEach(function(obj, index) {
+                stocksData.forEach(function(obj, index) {
                     mapObject[obj.company] = index
 
                     // Adding new property for watchlistFunctionality
-                    data[index].watchlist = false
+                    stocksData[index].watchlist = false
                 });
                 
-                dispatch(fetchStockDataSuccess(data))
+                dispatch(fetchStockDataSuccess(stocksData))
                 dispatch(mapCompanyToIndex(mapObject))
             })
             .catch(error => {
@@ -65,23 +65,23 @@ export const updateStockData = () => {
     return function(dispatch) {
         axios.get("mock/indiaStocks.json")
             .then(response => {
-                const data = response.data.data;
+                const stocksData = response.data.data;
 
                 // Store previous watchlist status and MapCompanyToIndex
-                const prevData = store.getState().stockData.data;
+                const prevData = store.getState().stockData.stocksData;
                 const prevMapCompanyToIndex = store.getState().stockData.mapCompanyToIndex;
                 const mapObject = {};
-                for(let i=0; i<data.length; i++) {
-                    const company = data[i].company;
+                for(let i=0; i<stocksData.length; i++) {
+                    const company = stocksData[i].company;
                     const index = prevMapCompanyToIndex[company];
                     const watchlist = prevData[index].watchlist;
-                    data[i].watchlist = watchlist;
+                    stocksData[i].watchlist = watchlist;
 
                     // MapCompanyToIndex
                     mapObject[company] = i;
                 }
 
-                dispatch(fetchStockDataSuccess(data))
+                dispatch(fetchStockDataSuccess(stocksData))
                 dispatch(mapCompanyToIndex(mapObject))
             });
     }

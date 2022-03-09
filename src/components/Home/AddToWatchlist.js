@@ -11,8 +11,8 @@ function AddToWatchlist(props) {
 	function handleButtonClick() {
 
 		const index = props.index;
-		const watchlistCondition = props.data[index].watchlist;
-		const shallowCopyData = [...props.data];
+		const watchlistCondition = props.stocksData[index].watchlist;
+		const shallowCopyData = [...props.stocksData];
 		shallowCopyData[index] = {...shallowCopyData[index], watchlist: !watchlistCondition};
 		props.toggleWatchlist(shallowCopyData)
 
@@ -29,7 +29,7 @@ function AddToWatchlist(props) {
 			<img 
 				className="watchlist-button" 
 				width="30px" 
-				src={props.data[props.index].watchlist ? doneImage : addImage} 
+				src={props.stocksData[props.index].watchlist ? doneImage : addImage} 
 				alt="Add"
 				onClick={handleButtonClick}
 			/>
@@ -39,7 +39,7 @@ function AddToWatchlist(props) {
 
 const mapStateToProps = (state) => {
 	return {
-		data: state.stockData.data,
+		stocksData: state.stockData.stocksData,
 	}
 }
 
@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		addToWatchlist: company => dispatch(addToWatchlist(company)),
 		removeFromWatchlist: company => dispatch(removeFromWatchlist(company)),
-		toggleWatchlist: data => dispatch(toggleWatchlist(data)),
+		toggleWatchlist: stocksData => dispatch(toggleWatchlist(stocksData)),
 	}
 }
 

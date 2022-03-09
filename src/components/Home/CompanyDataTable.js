@@ -4,7 +4,7 @@ import "./CompanyDataTable.css";
 import { connect } from "react-redux";
 
 function CompanyDataTable(props) {
-	const data = props.data;
+	const stocksData = props.stocksData;
 
 	return (
 		<div className="company-data">
@@ -36,7 +36,7 @@ function CompanyDataTable(props) {
 								</div>
 							)
 							: (
-								data.map((obj, index) => {
+								stocksData.map((obj, index) => {
 									return <CompanyDataRow 
 												key={obj.company} 
 												index={index}
@@ -57,7 +57,7 @@ function CompanyDataTable(props) {
 const mapStateToProps = (state) => {
 	return {
 		loading: state.stockData.loading,
-		data: state.stockData.data,
+		stocksData: state.stockData.stocksData,
 		error: state.stockData.error,
 	};
 };
