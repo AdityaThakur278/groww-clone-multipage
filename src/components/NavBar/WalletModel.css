@@ -1,4 +1,4 @@
-.investment-detail .modalBackground {
+.navbar .modalBackground {
   width: 100vw;
   height: 100vh;
   background-color: rgba(200, 200, 200);
@@ -8,9 +8,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
-.investment-detail .modalContainer {
+.navbar .modalContainer {
   width: 500px;
   border-radius: 12px;
   background-color: white;
@@ -18,7 +19,7 @@
   padding: 2%;
 }
 
-.investment-detail .titleCloseBtn {
+.navbar .titleCloseBtn {
   display: flex;
   justify-content: space-between;
   background-color: #e5faf5;
@@ -26,54 +27,54 @@
   padding: 2%;
 }
 
-.investment-detail .titleCloseBtn p {
+.navbar .titleCloseBtn p {
   font-size: 1.3rem;
   display: flex;
   align-items: center;
 }
 
-.investment-detail .titleCloseBtn button {
+.navbar .titleCloseBtn button {
   background-color: transparent;
   border: none;
   font-size: 25px;
   cursor: pointer;
 }
 
-.investment-detail .add-withdraw-balance {
+.navbar .add-withdraw-balance {
   padding: 4% 0;
   display: flex;
   justify-content: space-between;
 }
 
-.investment-detail .add-withdraw {
+.navbar .add-withdraw {
   display: flex;
   flex-direction: row;
 }
 
-.investment-detail .add,
+.navbar .add,
 .withdraw {
   margin: 1% 6%;
   padding: 3% 3%;
   font-size: 1.3rem;
 }
 
-.investment-detail .selected {
+.navbar .selected {
   color: #00d09c;
   border-bottom: 4px solid #00d09c;
   font-weight: 700;
 }
 
-.investment-detail .balance-text {
+.navbar .balance-text {
   text-align: end;
 }
 
-.investment-detail .balance-amount {
+.navbar .balance-amount {
   text-align: end;
   color: #00d09c;
   font-weight: 700;
 }
 
-.investment-detail .add-withdraw-amount {
+.navbar .add-withdraw-amount {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -81,13 +82,13 @@
   font-weight: 700;
 }
 
-.investment-detail .add-withdraw-amt-label {
+.navbar .add-withdraw-amt-label {
   display: flex;
   align-items: center;
   font-size: 1.3rem;
 }
 
-.investment-detail .add-withdraw-amt-input {
+.navbar .add-withdraw-amt-input {
   border: none;
   background-color: #e5faf5;
   height: 2.2rem;
@@ -100,19 +101,19 @@
   padding-right: 2%;
 }
 
-.investment-detail .add-withdraw-amt-input:focus {
+.navbar .add-withdraw-amt-input:focus {
   outline: none;
 }
 
-.investment-detail .add-withdraw-cancel-button {
+.navbar .add-withdraw-cancel-button {
   margin-top: 10%;
   padding: 3%;
   display: flex;
   justify-content: space-evenly;
 }
 
-.investment-detail .cancel-button,
-.investment-detail .add-withdraw-button {
+.navbar .cancel-button,
+.navbar .add-withdraw-button {
   padding: 3%;
 
   border: none;
@@ -122,10 +123,10 @@
   cursor: pointer;
 }
 
-.investment-detail .cancel-button {
+.navbar .cancel-button {
   background-color: #e34234;
 }
 
-.investment-detail .add-withdraw-button {
+.navbar .add-withdraw-button {
   background-color: #00d09c;
 }

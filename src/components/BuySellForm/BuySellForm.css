@@ -48,7 +48,8 @@
 
   .buy-sell-info {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: #7c7e8c;
+    padding: 0 2%;
     /* margin-top: 6%; */
   }

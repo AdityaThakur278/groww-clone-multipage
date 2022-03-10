@@ -1,26 +1,18 @@
 import React from 'react'
 import "./Transactions.css"
 import TransactionTable from './TransactionTable'
-import { connect } from 'react-redux'
 
 function Transantions(props) {
     return (
         <div className='transactions-container'>
             <div className='pending-transaction'>
-                <TransactionTable type="Pending" transactionArray={props.pendingTransaction} cancel={true}/>
+                <TransactionTable type="Pending"/>
             </div>
             <div className='complete-transaction'>
-                <TransactionTable type="Complete" transactionArray={props.completeTransaction} cancel={false}/>
+                <TransactionTable type="Complete"/>
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-	return {
-		pendingTransaction: state.transaction.pendingTransaction,
-		completeTransaction: state.transaction.completeTransaction,
-	}
-}
-
-export default connect(mapStateToProps, null)(Transantions)
+export default Transantions

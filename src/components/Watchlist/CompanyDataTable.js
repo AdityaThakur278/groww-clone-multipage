@@ -22,14 +22,14 @@ function CompanyDataTable(props) {
 
 				<div className="table-content">
 					{
-						props.watchlistCompany.length === 0
+						props.defaultWatchlist.length === 0
                         ? (
                             <div className='no-data'>
                                 No Companies in Watchlist
                             </div>
                         )
                         : (
-                            props.watchlistCompany.map(company => <CompanyDataRow key={company} company={company}/>)
+                            props.defaultWatchlist.map(company => <CompanyDataRow key={company} company={company}/>)
                         )
 					}
 				</div>
@@ -40,7 +40,7 @@ function CompanyDataTable(props) {
 
 const mapStateToProps = (state) => {
 	return {
-		watchlistCompany: state.watchlist.watchlistCompany,
+		defaultWatchlist: state.watchlist.defaultWatchlist,
 	};
 };
 

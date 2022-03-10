@@ -32,10 +32,3 @@ export const targetPriceChange = (payload) => {
         payload,
     }
 }
-
-export const sharesOwnedChange = (payload) => {
-    return {
-        type: "SHARE_OWNED_CHANGE",
-        payload,
-    }
-}

@@ -1,27 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import "./BuySellTransaction.css"
-import {addToPendingTransaction} from "../../Redux/transaction/transactionAction"
-
+import {addToTransactions, addToPendingBlockedAmount} from "../../Redux/transaction/transactionAction"
+import { v4 } from "uuid";
+ 
 function BuySellTransaction(props) {
 
     function buyTransaction() {
         const totalAmount = parseFloat(props.shareQuantity) * parseFloat(props.targetPrice);
         const walletBalance = parseFloat(props.walletBalance);
+        const pendingBlockedAmount = parseFloat(props.pendingBlockedAmount);
 
         if(totalAmount > walletBalance) {
             alert("Wallet balance is not enough!!")
             return;
         }
 
-        props.addToPendingTransaction({
+        if(totalAmount + pendingBlockedAmount > walletBalance) {
+            alert("₹" + pendingBlockedAmount +  " of wallet balance(₹" + walletBalance + ") is blocked in pending transaction");
+            return;
+        }
+
+        const id = v4();
+        
+        props.addToTransactions(id, {
+            transactionType: "pending",
             type: "B",
             company: props.buySellCompany,
             price: props.targetPrice,
             quantity: props.shareQuantity,
             total: totalAmount.toFixed(2),
-        })
-
+        });
+        props.addToPendingBlockedAmount(totalAmount);
         alert("Transaction added to pending transaction list");
     }
 
@@ -54,12 +64,14 @@ const mapStateToProps = (state) => {
         shareQuantity: state.buySellForm.shareQuantityValue,
         targetPrice: state.buySellForm.targetPrice,
         buySellCompany: state.buySellForm.buySellCompany,
+        pendingBlockedAmount: state.transaction.pendingBlockedAmount,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToPendingTransaction: value => dispatch(addToPendingTransaction(value))
+        addToTransactions: (id, transaction) => dispatch(addToTransactions(id, transaction)),
+        addToPendingBlockedAmount: (amount) => dispatch(addToPendingBlockedAmount(amount)),
     }
 }
 

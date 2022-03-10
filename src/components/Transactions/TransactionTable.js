@@ -1,10 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import TransactionRow from './TransactionRow';
 import "./TransactionTable.css"
 
 function TransactionTable(props) {
 
-    const transactionArray = props.transactionArray;
+    const pendindTransactionID = props.transactionID.filter(id => props.transactions[id].transactionType === "pending");
+    const completeTransactionID = props.transactionID.filter(id => props.transactions[id].transactionType === "complete");
 
     const tableStyle = {
         transactionType: {width: props.cancel ? "9%" : "10%"},
@@ -28,34 +30,55 @@ function TransactionTable(props) {
                     <p style={tableStyle.targetPrice} className="target-price">Target Price</p>
                     <p style={tableStyle.quantity} className="quantity">Quantity</p>
                     <p style={tableStyle.total} className="total">Total</p>
-                    {props.cancel ? <p style={tableStyle.cancel} className='cancel'>Cancel</p> : null}
+                    {props.type === "Pending" ? <p style={tableStyle.cancel} className='cancel'>Cancel</p> : null}
                 </div>
             </div>
 
             {
-                transactionArray.length === 0 
-                ? (
-                    <div className="no-transaction">
-                        No Transactions
-                    </div>
-                ) 
-                : (
-                    transactionArray.map((obj, index) => {
-                        return  <TransactionRow
-                                    key={index}
-                                    index={index}
-                                    type={obj.type}
-                                    company={obj.company}
-                                    price={obj.price}
-                                    quantity={obj.quantity}
-                                    total={obj.total}
-                                    cancel={props.cancel}
-                                />
-                    })
-                )
+                props.type === "Pending" 
+                ? pendindTransactionID.length === 0
+                    ? (
+                        <div className="no-transaction">
+                            No Transactions
+                        </div>
+                    )
+                    : pendindTransactionID.map(id =>  <TransactionRow
+                        key = {id}
+                        id = {id}
+                        type = {props.transactions[id].type}
+                        company={props.transactions[id].company}
+                        price={props.transactions[id].price}
+                        quantity={props.transactions[id].quantity}
+                        total={props.transactions[id].total}
+                        cancel={true}
+                    />)
+                
+                : completeTransactionID.length === 0
+                    ? (
+                        <div className="no-transaction">
+                            No Transactions
+                        </div>
+                    )
+                    : completeTransactionID.map(id =>  <TransactionRow
+                        key = {id}
+                        id = {id}
+                        type = {props.transactions[id].type}
+                        company={props.transactions[id].company}
+                        price={props.transactions[id].price}
+                        quantity={props.transactions[id].quantity}
+                        total={props.transactions[id].total}
+                        cancel={false}
+                    />)
             }
         </div>
     )
 }
 
-export default TransactionTable;
+const mapStateToProps = (state) => {
+    return {
+        transactions: state.transaction.transactions,
+        transactionID: state.transaction.transactionID,
+    }
+}
+
+export default connect(mapStateToProps, null)(TransactionTable);

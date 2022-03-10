@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 const getCompanyIndex = (stocksData, company) => {
     for(let i=0; i<stocksData.length; i++) {
         if(stocksData[i].company === company) {
@@ -7,59 +9,69 @@ const getCompanyIndex = (stocksData, company) => {
 }
 
 // Call from NavBar.js
-export const checkPendingTransactions = (
-    stocksData,
-    pendingTransaction,
-    walletBalance,
-    addToCompleteTransaction,
-    addToAssets,
-    deletePendingTransaction,
-    withdrawFromWallet,
-    ) => {
+export const checkPendingTransactions = (funcArgs) => {
 
-    for(let i=pendingTransaction.length-1; i>=0; i--) {
-        const type = pendingTransaction[i].type;
-        const company = pendingTransaction[i].company;
-        const targetPrice = parseFloat(pendingTransaction[i].price);
-        const quantity = pendingTransaction[i].quantity;
-        const total = parseFloat(pendingTransaction[i].total);
+    const transactions = funcArgs.transactions;
+    const transactionID = funcArgs.transactionID;
 
-        const index = getCompanyIndex(stocksData, company);
-        const currentPrice = parseFloat(stocksData[index].ltp);
+    console.log(transactions)
+    console.log(transactionID)
 
-        if(targetPrice >= currentPrice && total <= walletBalance && type === "B") {
-            buyTransactionSuccessful(i, company, targetPrice, quantity, total, addToCompleteTransaction, addToAssets, deletePendingTransaction, withdrawFromWallet);
+    for(let i=transactionID.length-1; i>=0; i--) {
+        const id = transactionID[i];
+        const transactionType = transactions[id].transactionType;
+        if(transactionType !== "pending") continue;
+
+        const type = transactions[id].type;
+        const company = transactions[id].company;
+        const targetPrice = parseFloat(transactions[id].price);
+        const quantity = transactions[id].quantity;
+        const total = parseFloat(transactions[id].total);
+
+        const index = getCompanyIndex(funcArgs.stocksData, company);
+        const currentPrice = parseFloat(funcArgs.stocksData[index].ltp);
+
+        if(targetPrice >= currentPrice && type === "B") {
+            buyTransactionSuccessful({
+                i,
+                id,
+                company,
+                targetPrice,
+                quantity,
+                total,
+                addToTransactions: funcArgs.addToTransactions,
+                addToAssets: funcArgs.addToAssets,
+                deletePendingTransaction: funcArgs.deletePendingTransaction,
+                withdrawFromWallet: funcArgs.withdrawFromWallet,
+                substractFromPendingBlockedAmount: funcArgs.substractFromPendingBlockedAmount,
+            }); 
         }
     }
 }
 
-function buyTransactionSuccessful(
-    index, 
-    company, 
-    targetPrice, 
-    quantity, 
-    total, 
-    addToCompleteTransaction,
-    addToAssets,
-    deletePendingTransaction,
-    withdrawFromWallet) {
+function buyTransactionSuccessful(funcArgs) {
 
-    addToCompleteTransaction({
+    const newID = v4();
+
+    funcArgs.addToTransactions(newID, {
         type: "B",
-        company,
-        price: targetPrice,
-        quantity,
-        total,
+        transactionType: "complete",
+        company: funcArgs.company,
+        price: funcArgs.targetPrice,
+        quantity: funcArgs.quantity,
+        total: funcArgs.total,
     })
 
-    addToAssets(company, {
-        company,
-        price : targetPrice,
-        quantity,
-        total
+    funcArgs.addToAssets(funcArgs.company, {
+        company: funcArgs.company,
+        price: funcArgs.targetPrice,
+        quantity: funcArgs.quantity,
+        total: funcArgs.total,
     })
 
-    deletePendingTransaction(index);
+    funcArgs.deletePendingTransaction(funcArgs.id);
 
-    withdrawFromWallet(total)
+    funcArgs.withdrawFromWallet(funcArgs.total);
+
+    funcArgs.substractFromPendingBlockedAmount(funcArgs.total);
 }

@@ -4,7 +4,6 @@ const initialState = {
     marketPriceValue: null,
     shareQuantityValue: 0,
     targetPrice: "0.0",
-    sharesOwned: 0, //Asset List Required
 }
 
 const reducer = (state = initialState, action) => {
@@ -33,11 +32,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 targetPrice: action.payload,
-            }
-        case "SHARE_OWNED_CHANGE":
-            return {
-                ...state,
-                sharesOwned: action.payload,
             }
         default:
             return state;

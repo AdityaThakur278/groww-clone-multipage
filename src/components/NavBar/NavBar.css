@@ -9,9 +9,20 @@
     margin-left: 15%; */
 }
 
+.navbar .remaining-element {
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+}
+
 .navbar .element {
-    margin: 1% 4%;
+    margin: 1% 3%;
     text-decoration: none;
     color: black;
     font-size: 1.5rem;
+}
+
+.element-hover:hover {
+    color: #00d09c;
+    font-weight: 700;
 }

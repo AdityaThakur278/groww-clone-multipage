@@ -1,5 +1,5 @@
 const initialState = {
-    watchlistCompany : []
+    defaultWatchlist : []
 }
 
 const reducer = (state = initialState, action) => {
@@ -7,12 +7,12 @@ const reducer = (state = initialState, action) => {
         case "ADD_TO_WATCHLIST":
             return {
                 ...state,
-                watchlistCompany: [action.payload, ...state.watchlistCompany]
+                defaultWatchlist: [action.payload, ...state.defaultWatchlist]
             }
         case "REMOVE_FROM_WATCHLIST":
             return {
                 ...state,
-                watchlistCompany: state.watchlistCompany.filter((company) => {
+                defaultWatchlist: state.defaultWatchlist.filter((company) => {
                     return company !== action.payload
                 })
             }
