@@ -23,7 +23,23 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 [company] : shallowCopy,
             }
+        case "SUBSTRACT_FROM_ASSETS":
+            const companyName = action.company;
+            const transactionDetails = action.transactionDetail;
+            const shallowCopyAsset = {...state};
+            const shallowCopyCompany = {...state[companyName]}
+ 
+            shallowCopyCompany.quantity = parseInt(shallowCopyCompany.quantity) - parseInt(transactionDetails.quantity);
+            shallowCopyCompany.total = parseFloat(shallowCopyCompany.quantity) * parseFloat(shallowCopyCompany.price);
+            shallowCopyCompany.total = shallowCopyCompany.total.toFixed(2);
 
+            shallowCopyAsset[companyName] = shallowCopyCompany;
+            
+            if(shallowCopyCompany.quantity === 0) {
+                delete shallowCopyAsset[companyName];
+            }
+
+            return shallowCopyAsset;
         default:
             return state;
     }

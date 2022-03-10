@@ -4,9 +4,9 @@ import "./NavBar.css"
 import { fetchStockData, updateStockData } from "../../Redux/stockData/stockDataAction";
 import { connect } from 'react-redux';
 import { checkPendingTransactions } from '../checkPendingTransactions';
-import { addToTransactions, deletePendingTransaction, substractFromPendingBlockedAmount } from "../../Redux/transaction/transactionAction"
-import { addToAssets } from "../../Redux/assets/assetsActions"
-import { withdrawFromWallet } from "../../Redux/wallet/walletActions"
+import { addToTransactions, deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks } from "../../Redux/transaction/transactionAction"
+import { addToAssets, substractFromAssets } from "../../Redux/assets/assetsActions"
+import { addToWallet, withdrawFromWallet } from "../../Redux/wallet/walletActions"
 import WalletModel from './WalletModel';
 
 function NavBar(props) {
@@ -37,6 +37,9 @@ function NavBar(props) {
             deletePendingTransaction: props.deletePendingTransaction,
             withdrawFromWallet: props.withdrawFromWallet,
             substractFromPendingBlockedAmount: props.substractFromPendingBlockedAmount,
+            substractFromAssets: props.substractFromAssets,
+            addToWallet: props.addToWallet,
+            substractFromPendingBlockedStocks: props.substractFromPendingBlockedStocks,
         }
         checkPendingTransactions(funcArguments);
 
@@ -97,6 +100,9 @@ const mapDispatchToProps = (dispatch) => {
         deletePendingTransaction: (id) => dispatch(deletePendingTransaction(id)),
         withdrawFromWallet: (amount) => dispatch(withdrawFromWallet(amount)),
         substractFromPendingBlockedAmount: (amount) => dispatch(substractFromPendingBlockedAmount(amount)),
+        substractFromAssets: (company, transactionDetail) => dispatch(substractFromAssets(company, transactionDetail)),
+        addToWallet: amount => dispatch(addToWallet(amount)),
+        substractFromPendingBlockedStocks: (company, units) => dispatch(substractFromPendingBlockedStocks(company, units)),
     };
 };
 

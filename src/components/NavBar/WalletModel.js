@@ -23,16 +23,21 @@ function WalletModel(props) {
     }
 
     function handleWalletTransaction() {
-        if(addTabStyle) {
+        if(props.addTab) {
             props.addToWallet(amountInput);
             alert("Amount added successfully");
         }
-        else if(withdrawTabStyle) {
+        else if(props.withdrawTab) {
 
             if(parseFloat(props.balance) < parseFloat(amountInput)) {
                 alert("Not enough balance!");
                 return;
             }
+            else if(parseFloat(props.balance) < parseFloat(amountInput) + parseFloat(props.pendingBlockedAmount)) {
+                alert("₹" + props.pendingBlockedAmount +  " of wallet balance(₹" + props.balance + ") is blocked in pending transaction");
+                return;
+            }
+
             props.withdrawFromWallet(amountInput);
             alert("Amount withdrawn successfully");
         }
@@ -76,6 +81,8 @@ function WalletModel(props) {
                     />
                 </div>
 
+                <p className="add-withdraw-info"> {"₹" + props.pendingBlockedAmount +  " of wallet balance(₹" + props.balance + ") is blocked in pending transaction"} </p>
+
                 <div className="add-withdraw-cancel-button">
                     <button className="cancel-button" onClick={() => props.setWalletModel(false)}>Cancel</button>
                     <button className="add-withdraw-button" onClick={handleWalletTransaction}>{addWithdrawButton}</button>
@@ -88,6 +95,7 @@ function WalletModel(props) {
 const mapStateToProps = (state) => {
     return {
         balance: (state.wallet.balance).toFixed(2),
+        pendingBlockedAmount: state.transaction.pendingBlockedAmount,
     }
 }
 

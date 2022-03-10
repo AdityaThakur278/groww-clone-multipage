@@ -101,6 +101,11 @@
   padding-right: 2%;
 }
 
+.navbar .add-withdraw-info {
+  padding-top: 2%;
+  text-align: center;
+}
+
 .navbar .add-withdraw-amt-input:focus {
   outline: none;
 }

@@ -1,10 +1,8 @@
 const initialState = {
-    pendingTransaction: [],
-    completeTransaction: [],
-    // New
     transactions: {},
     transactionID: [],
     pendingBlockedAmount: 0,
+    pendingBlockedStocks: {},
 }
 
 const reducer = (state=initialState, action) => {
@@ -16,18 +14,6 @@ const reducer = (state=initialState, action) => {
     }
 
     switch(action.type) {
-        case "ADD_TO_PENDING_TRANSACTION":
-            return {
-                ...state,
-                pendingTransaction: [action.payload, ...state.pendingTransaction],
-            }
-        case "ADD_TO_COMPLETE_TRANSACTION":
-            return {
-                ...state,
-                completeTransaction: [action.payload, ...state.completeTransaction],
-            }
-        
-        // New
         case "ADD_TO_TRANSACTIONS":
             return {
                 ...state, 
@@ -57,6 +43,27 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 transactions: shallowCopyTransactions,
                 transactionID: shallowCopyTransactionID,
+            }
+        case "ADD_TO_PENDING_BLOCKED_STOCKS":
+            let prevBlocked = state.pendingBlockedStocks[action.company];
+            prevBlocked = prevBlocked === undefined ? 0 : prevBlocked;
+            return {
+                ...state,
+                pendingBlockedStocks: {
+                    ...state.pendingBlockedStocks,
+                    [action.company]: parseFloat(prevBlocked) + parseFloat(action.units),
+                }
+            }
+        case "SUBSTRACT_FROM_PENDING_BLOCKED_STOCKS":
+            const shallowCopyPendingBlockedStocks = {...state.pendingBlockedStocks};
+            shallowCopyPendingBlockedStocks[action.company] -= parseFloat(action.units);
+            if(shallowCopyPendingBlockedStocks[action.company] === 0) {
+                delete shallowCopyPendingBlockedStocks[action.company];
+            }
+
+            return {
+                ...state,
+                pendingBlockedStocks: shallowCopyPendingBlockedStocks,
             }
         default:
             return state;

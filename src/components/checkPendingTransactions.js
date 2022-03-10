@@ -33,7 +33,6 @@ export const checkPendingTransactions = (funcArgs) => {
 
         if(targetPrice >= currentPrice && type === "B") {
             buyTransactionSuccessful({
-                i,
                 id,
                 company,
                 targetPrice,
@@ -45,6 +44,21 @@ export const checkPendingTransactions = (funcArgs) => {
                 withdrawFromWallet: funcArgs.withdrawFromWallet,
                 substractFromPendingBlockedAmount: funcArgs.substractFromPendingBlockedAmount,
             }); 
+        }
+
+        if(targetPrice <= currentPrice && type === "S") {
+            sellTransactionSuccessful({
+                id,
+                company,
+                targetPrice,
+                quantity,
+                total,
+                addToTransactions: funcArgs.addToTransactions,
+                substractFromAssets: funcArgs.substractFromAssets,
+                deletePendingTransaction: funcArgs.deletePendingTransaction,
+                addToWallet: funcArgs.addToWallet,
+                substractFromPendingBlockedStocks: funcArgs.substractFromPendingBlockedStocks,
+            });
         }
     }
 }
@@ -74,4 +88,31 @@ function buyTransactionSuccessful(funcArgs) {
     funcArgs.withdrawFromWallet(funcArgs.total);
 
     funcArgs.substractFromPendingBlockedAmount(funcArgs.total);
+}
+
+function sellTransactionSuccessful(funcArgs) {
+
+    const newID = v4();
+
+    funcArgs.addToTransactions(newID, {
+        type: "S",
+        transactionType: "complete",
+        company: funcArgs.company,
+        price: funcArgs.targetPrice,
+        quantity: funcArgs.quantity,
+        total: funcArgs.total,
+    });
+
+    funcArgs.substractFromAssets(funcArgs.company, {
+        company: funcArgs.company,
+        price: funcArgs.targetPrice,
+        quantity: funcArgs.quantity,
+        total: funcArgs.total,
+    });
+
+    funcArgs.deletePendingTransaction(funcArgs.id);
+
+    funcArgs.addToWallet(funcArgs.total);
+
+    funcArgs.substractFromPendingBlockedStocks(funcArgs.company, funcArgs.quantity);
 }

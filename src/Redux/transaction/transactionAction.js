@@ -1,19 +1,3 @@
-export const addToPendingTransaction = (payload) => {
-    return {
-        type: "ADD_TO_PENDING_TRANSACTION",
-        payload,
-    }
-}
-
-export const addToCompleteTransaction = (payload) => {
-    return {
-        type: "ADD_TO_COMPLETE_TRANSACTION",
-        payload,
-    }
-}
-
-// New 
-
 export const addToTransactions = (id, transaction) => {
     return {
         type: "ADD_TO_TRANSACTIONS",
@@ -40,5 +24,21 @@ export const deletePendingTransaction = (id) => {
     return {
         type: "DELETE_PENDING_TRANSACTION",
         id
+    }
+}
+
+export const addToPendingBlockedStocks = (company, units) => {
+    return {
+        type: "ADD_TO_PENDING_BLOCKED_STOCKS",
+        company,
+        units
+    }
+}
+
+export const substractFromPendingBlockedStocks = (company, units) => {
+    return {
+        type: "SUBSTRACT_FROM_PENDING_BLOCKED_STOCKS",
+        company,
+        units
     }
 }

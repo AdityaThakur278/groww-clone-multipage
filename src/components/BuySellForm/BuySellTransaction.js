@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import "./BuySellTransaction.css"
-import {addToTransactions, addToPendingBlockedAmount} from "../../Redux/transaction/transactionAction"
+import {addToTransactions, addToPendingBlockedAmount, addToPendingBlockedStocks} from "../../Redux/transaction/transactionAction"
 import { v4 } from "uuid";
  
 function BuySellTransaction(props) {
@@ -35,12 +35,45 @@ function BuySellTransaction(props) {
         alert("Transaction added to pending transaction list");
     }
 
+    function sellTransaction() {
+        const sharesOwned = props.assets[props.buySellCompany] === undefined ? 0 : props.assets[props.buySellCompany].quantity;
+        const shareQuantity = props.shareQuantity;
+        const pendingBlockedStocks = props.pendingBlockedStocks[props.buySellCompany] === undefined ? 0 : props.pendingBlockedStocks[props.buySellCompany];
+        const totalAmount = parseFloat(props.shareQuantity) * parseFloat(props.targetPrice);
+
+        if(parseFloat(shareQuantity) > parseFloat(sharesOwned)) {
+            alert("Not having enough shares!")
+            return;
+        }
+
+        if(parseFloat(shareQuantity) + parseFloat(pendingBlockedStocks) > parseFloat(sharesOwned)) {
+            alert(pendingBlockedStocks + "-units of shares owned( " + sharesOwned + " ) is blocked in pending transaction");
+            return;
+        }
+
+        const id = v4();
+
+        props.addToTransactions(id, {
+            transactionType: "pending",
+            type: "S",
+            company: props.buySellCompany,
+            price: props.targetPrice,
+            quantity: props.shareQuantity,
+            total: totalAmount.toFixed(2),
+        });
+        props.addToPendingBlockedStocks(props.buySellCompany, props.shareQuantity);
+        alert("Transaction added to pending transaction list");
+    }
+
     function buySellTransaction() {
 
         if(props.buySellCompany === "Select Company") return;
 
         if(props.buyTab) {
             buyTransaction();
+        }
+        else {
+            sellTransaction();
         }
     }
 
@@ -65,6 +98,8 @@ const mapStateToProps = (state) => {
         targetPrice: state.buySellForm.targetPrice,
         buySellCompany: state.buySellForm.buySellCompany,
         pendingBlockedAmount: state.transaction.pendingBlockedAmount,
+        pendingBlockedStocks: state.transaction.pendingBlockedStocks,
+        assets: state.assets,
     }
 }
 
@@ -72,6 +107,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addToTransactions: (id, transaction) => dispatch(addToTransactions(id, transaction)),
         addToPendingBlockedAmount: (amount) => dispatch(addToPendingBlockedAmount(amount)),
+        addToPendingBlockedStocks: (company, units) => dispatch(addToPendingBlockedStocks(company, units)),
     }
 }
 

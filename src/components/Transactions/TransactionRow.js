@@ -1,6 +1,6 @@
 import React from 'react'
 import "./TransactionRow.css"
-import { deletePendingTransaction, substractFromPendingBlockedAmount } from "../../Redux/transaction/transactionAction"
+import { deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks } from "../../Redux/transaction/transactionAction"
 import { connect } from 'react-redux';
 
 function TransactionRow(props) {
@@ -10,9 +10,10 @@ function TransactionRow(props) {
         else if(props.type ==="S") return "transaction-type-sell";
     }
 
-    function handleCancelTransaction(total) {
+    function handleCancelTransaction(total, company, quantity) {
         props.deletePendingTransaction(props.id);
-        props.substractFromPendingBlockedAmount(total);
+        if(props.type === "B") props.substractFromPendingBlockedAmount(total);
+        if(props.type === "S") props.substractFromPendingBlockedStocks(company, quantity);
     }
 
     const tableStyle = {
@@ -35,7 +36,7 @@ function TransactionRow(props) {
                 props.cancel
                 ? (
                     <p style={tableStyle.cancel} className='cancel'>
-                        <button onClick={() => handleCancelTransaction(props.total)} className="cancel-button">C</button>
+                        <button onClick={() => handleCancelTransaction(props.total, props.company, props.quantity)} className="cancel-button">C</button>
                     </p>
                 )
                 : null
@@ -48,6 +49,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         deletePendingTransaction: index => dispatch(deletePendingTransaction(index)),
         substractFromPendingBlockedAmount: amount => dispatch(substractFromPendingBlockedAmount(amount)),
+        substractFromPendingBlockedStocks: (company, units) => dispatch(substractFromPendingBlockedStocks(company, units)),
     }
 }
 

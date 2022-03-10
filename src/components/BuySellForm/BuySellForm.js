@@ -12,6 +12,8 @@ function BuySellForm(props) {
     const sellTab = props.buyTab ? "" : "selected";
 
     const sharesOwned = props.assets[props.companyName] === undefined ? 0 : props.assets[props.companyName].quantity;
+    let pendingBlockedStocks = props.pendingBlockedStocks[props.companyName];
+    pendingBlockedStocks = pendingBlockedStocks === undefined ? 0 : pendingBlockedStocks;
 
     function buyTabSelect() {
         props.buyTabChange(true);
@@ -38,8 +40,8 @@ function BuySellForm(props) {
 
                     <p className="buy-sell-info">
                         {props.buyTab 
-                            ?  "₹" + props.pendingBlockedAmount +  " of wallet balance(₹" + props.walletBalance + ") is blocked in pending transaction"
-                            : "Sell Tab Message"
+                            ? "₹" + props.pendingBlockedAmount +  " of wallet balance(₹" + props.walletBalance + ") is blocked in pending transaction"
+                            : pendingBlockedStocks + "-units of shares owned( " + sharesOwned + " ) is blocked in pending transaction"  
                         }
                     </p>
 
@@ -56,6 +58,7 @@ const mapStateToProps = (state) => {
         assets: state.assets,
         pendingBlockedAmount: state.transaction.pendingBlockedAmount,
         walletBalance: state.wallet.balance,
+        pendingBlockedStocks: state.transaction.pendingBlockedStocks,
     }
 }
 

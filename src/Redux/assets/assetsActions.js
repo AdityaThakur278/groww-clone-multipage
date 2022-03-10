@@ -5,3 +5,11 @@ export const addToAssets = (company, transactionDetail) => {
         transactionDetail,
     }
 }
+
+export const substractFromAssets = (company, transactionDetail) => {
+    return {
+        type: "SUBSTRACT_FROM_ASSETS",
+        company,
+        transactionDetail,
+    }
+}
