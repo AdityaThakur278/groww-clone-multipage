@@ -14,9 +14,6 @@ export const checkPendingTransactions = (funcArgs) => {
     const transactions = funcArgs.transactions;
     const transactionID = funcArgs.transactionID;
 
-    console.log(transactions)
-    console.log(transactionID)
-
     for(let i=transactionID.length-1; i>=0; i--) {
         const id = transactionID[i];
         const transactionType = transactions[id].transactionType;
@@ -43,6 +40,7 @@ export const checkPendingTransactions = (funcArgs) => {
                 deletePendingTransaction: funcArgs.deletePendingTransaction,
                 withdrawFromWallet: funcArgs.withdrawFromWallet,
                 substractFromPendingBlockedAmount: funcArgs.substractFromPendingBlockedAmount,
+                currentPrice,
             }); 
         }
 
@@ -58,6 +56,7 @@ export const checkPendingTransactions = (funcArgs) => {
                 deletePendingTransaction: funcArgs.deletePendingTransaction,
                 addToWallet: funcArgs.addToWallet,
                 substractFromPendingBlockedStocks: funcArgs.substractFromPendingBlockedStocks,
+                currentPrice,
             });
         }
     }
@@ -66,22 +65,23 @@ export const checkPendingTransactions = (funcArgs) => {
 function buyTransactionSuccessful(funcArgs) {
 
     const newID = v4();
+    const company = funcArgs.company;
 
     funcArgs.addToTransactions(newID, {
         type: "B",
         transactionType: "complete",
-        company: funcArgs.company,
+        company,
         price: funcArgs.targetPrice,
         quantity: funcArgs.quantity,
         total: funcArgs.total,
     })
 
     funcArgs.addToAssets(funcArgs.company, {
-        company: funcArgs.company,
+        company,
         price: funcArgs.targetPrice,
         quantity: funcArgs.quantity,
         total: funcArgs.total,
-    })
+    }, funcArgs.currentPrice)
 
     funcArgs.deletePendingTransaction(funcArgs.id);
 
@@ -108,7 +108,7 @@ function sellTransactionSuccessful(funcArgs) {
         price: funcArgs.targetPrice,
         quantity: funcArgs.quantity,
         total: funcArgs.total,
-    });
+    }, funcArgs.currentPrice);
 
     funcArgs.deletePendingTransaction(funcArgs.id);
 

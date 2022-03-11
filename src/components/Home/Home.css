@@ -3,60 +3,19 @@
   margin: auto;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.stock-data-area {
-  width: 45%;
+.home-page .stock-data-area {
+  width: 60%;
 }
 
-.right-side {
-  padding-top: 4%;
-  margin-left: 5%;
-  width: 50%;
-}
-
-.right-side-wrapper {
-  position: fixed;
+.home-page .buy-sell-form-area {
+  padding-top: 5%;
   width: 35%;
-  display: flex;
-  flex-direction: column;
-  height: 85%;
 }
 
-.asset-table {
-  overflow-y: scroll;
-  flex: 1 1 auto;
-  width: 80%;
-  margin: auto;
-  margin-top: 2.5%;
-  box-shadow: 1px 1px 3px 3px #e6e6e6;
-}
-
-.asset-table::-webkit-scrollbar {
-  width: 0.43rem;
-}
-
-.asset-table::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.asset-table::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.asset-table::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-.asset-table .heading {
-    display: flex;
-    flex-direction: row;
-    padding: 4%;
-}
-
-.asset-table .heading-name {
-    font-size: 1.4rem;
-    margin-right: 10%;
-    display: flex;
-    align-items: center;
+.home-page .buy-sell-form-wrapper {
+  position: fixed; 
+  width: 24%;
 }

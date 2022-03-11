@@ -1,14 +1,10 @@
-.investment-detail {
-  flex: 0 1 auto;
-}
-
-.investment-detail .investment-detail-top {
+.portfolio-page .investment-detail .investment-detail-top {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.investment-detail .top-card {
+.portfolio-page .investment-detail .top-card {
   width: 46%;
   padding: 3% 2%;
   margin: 3% 1.5%;
@@ -18,15 +14,16 @@
   align-items: center;
 }
 
-.investment-detail .top-card-value {
+.portfolio-page .investment-detail .top-card-value {
     color: #00d09c;
     font-weight: 700;
+    padding-top: 3%;
 }
 
-.investment-detail .profit {
+.portfolio-page .investment-detail .profit {
     color: #00d09c;
 }
 
-.investment-detail .loss {
+.portfolio-page .investment-detail .loss {
     color: #E34234;
 }

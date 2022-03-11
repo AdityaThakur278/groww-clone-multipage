@@ -1,4 +1,5 @@
-.watchlist-page .buy-button {
+.watchlist-page .buy-button,
+.stock-data-area .buy-button {
     background-color: #00d09c;
     border: none;
     color: white;
@@ -10,11 +11,13 @@
     transition: 0.7s;
   }
   
-  .watchlist-page .buy-button:hover {
+  .watchlist-page .buy-button:hover,
+  .stock-data-area .buy-button:hover {
     transform: scale(1.2);
   }
   
-  .watchlist-page .sell-button {
+  .watchlist-page .sell-button,
+  .stock-data-area .sell-button {
     border: 1px solid #00d09c;
     color: #00d09c;
     background-color: white;
@@ -26,7 +29,8 @@
     transition: 0.7s;
   }
   
-  .watchlist-page .sell-button:hover {
+  .watchlist-page .sell-button:hover,
+  .stock-data-area .sell-button:hover {
     transform: scale(1.2);
   }
   

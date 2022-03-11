@@ -96,11 +96,11 @@ const mapDispatchToProps = (dispatch) => {
 		fetchStockData: () => dispatch(fetchStockData()),
         updateStockData: () => dispatch(updateStockData()),
         addToTransactions: (id, transaction) => dispatch(addToTransactions(id, transaction)),
-        addToAssets: (company, transactionDetail) => dispatch(addToAssets(company, transactionDetail)),
+        addToAssets: (company, transactionDetail, currentPrice) => dispatch(addToAssets(company, transactionDetail, currentPrice)),
         deletePendingTransaction: (id) => dispatch(deletePendingTransaction(id)),
         withdrawFromWallet: (amount) => dispatch(withdrawFromWallet(amount)),
         substractFromPendingBlockedAmount: (amount) => dispatch(substractFromPendingBlockedAmount(amount)),
-        substractFromAssets: (company, transactionDetail) => dispatch(substractFromAssets(company, transactionDetail)),
+        substractFromAssets: (company, transactionDetail, currentPrice) => dispatch(substractFromAssets(company, transactionDetail, currentPrice)),
         addToWallet: amount => dispatch(addToWallet(amount)),
         substractFromPendingBlockedStocks: (company, units) => dispatch(substractFromPendingBlockedStocks(company, units)),
     };

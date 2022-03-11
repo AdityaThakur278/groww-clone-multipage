@@ -1,8 +1,7 @@
 import React from "react";
-import AssetTable from "./AssetTable";
+import BuySellForm from "../BuySellForm/BuySellForm";
 import CompanyDataTable from "./CompanyDataTable";
 import "./Home.css"
-import InvestmentDetails from "./InvestmentDetails";
 
 function Home(props) {
     return (
@@ -10,18 +9,11 @@ function Home(props) {
 			<div className="stock-data-area">
 				<CompanyDataTable/>
 			</div>
-			<div className="right-side">
-				<div className="right-side-wrapper">
-					<InvestmentDetails/>
-
-					<div className="asset-table">
-						<div className="heading">
-							<p className="heading-name">Assets</p>
-						</div>
-						<AssetTable/>
-					</div>
+			<div className="buy-sell-form-area">
+				<div className="buy-sell-form-wrapper">
+					<BuySellForm/>
 				</div>
-			</div>
+			</div>	
 		</div>
     );
 }

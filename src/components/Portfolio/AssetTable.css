@@ -1,0 +1,65 @@
+.portfolio-page .asset-table .table-heading {
+    display: flex;
+    flex-direction: row;
+    background-color: #e6e6e6;
+    font-size: 14px;
+    color: #44475b;
+    width: 100%;
+}
+
+.portfolio-page .asset-table .average-price, 
+.portfolio-page .asset-table .quantity, 
+.portfolio-page .asset-table .total, 
+.portfolio-page .asset-table .watchlist, 
+.portfolio-page .asset-table .profit-loss {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0;
+}
+
+.portfolio-page .asset-table .company-name {
+    display: flex;
+    align-items: center;
+    padding: 3% 0;
+    padding-left: 4%;
+    width: 25%;
+}
+
+.portfolio-page .asset-table .average-price {
+    width: 15%;
+}
+
+.portfolio-page .asset-table .quantity {
+    width: 9%;
+}   
+
+.portfolio-page .asset-table .total {
+    width: 20%;
+}
+
+.portfolio-page .asset-table .profit-loss {
+    width: 16%;
+}
+
+.portfolio-page .asset-table .profit-loss.profit{
+    font-weight: 700;
+    color: #00d09c;
+}
+
+.portfolio-page .asset-table .profit-loss.loss{
+    font-weight: 700;
+    color: #E34234;
+}
+
+.portfolio-page .asset-table .watchlist {
+    width: 15%;
+}
+
+.portfolio-page .asset-table .no-asset {
+    padding: 4%;
+    text-align: center;
+    color: #7c7e8c;
+    font-weight: 700;
+    font-size: 1.2rem;
+}

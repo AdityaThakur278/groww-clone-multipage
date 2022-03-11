@@ -1,0 +1,36 @@
+.portfolio-page {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.portfolio-page .asset-table {
+  width: 50%;
+  margin-top: 2.5%;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.portfolio-page .asset-table .heading {
+  display: flex;
+  flex-direction: row;
+  padding: 4%;
+}
+
+.portfolio-page .asset-table .heading-name {
+  font-size: 1.4rem;
+  margin-right: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-page .right-side {
+  padding-top: 4%;
+  margin-left: 5%;
+  width: 45%;
+}
+
+.portfolio-page .right-side-wrapper {
+  position: fixed;
+  width: 32.33%;
+}

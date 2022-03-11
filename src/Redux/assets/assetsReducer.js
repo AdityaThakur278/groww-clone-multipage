@@ -7,6 +7,10 @@ const reducer = (state = initialState, action) => {
             const transactionDetail = action.transactionDetail;
 
             if(state[company] === undefined) {
+                let profitLoss = (parseFloat(action.currentPrice) - parseFloat(transactionDetail.price)) * parseFloat(transactionDetail.quantity);
+                profitLoss = profitLoss.toFixed(2);
+                transactionDetail.profitLoss = profitLoss;
+
                 return {
                     ...state,
                     [company] : transactionDetail,
@@ -17,8 +21,10 @@ const reducer = (state = initialState, action) => {
             shallowCopy.quantity = parseInt(shallowCopy.quantity) + parseInt(transactionDetail.quantity)
             shallowCopy.total = parseFloat(shallowCopy.total) + parseFloat(transactionDetail.total);
             shallowCopy.price = shallowCopy.total / shallowCopy.quantity;
+            shallowCopy.profitLoss = (parseFloat(action.currentPrice) - shallowCopy.price) * shallowCopy.quantity;
             shallowCopy.total = shallowCopy.total.toFixed(2);
             shallowCopy.price = shallowCopy.price.toFixed(2);
+            shallowCopy.profitLoss = shallowCopy.profitLoss.toFixed(2);
             return {
                 ...state,
                 [company] : shallowCopy,
@@ -31,7 +37,9 @@ const reducer = (state = initialState, action) => {
  
             shallowCopyCompany.quantity = parseInt(shallowCopyCompany.quantity) - parseInt(transactionDetails.quantity);
             shallowCopyCompany.total = parseFloat(shallowCopyCompany.quantity) * parseFloat(shallowCopyCompany.price);
+            shallowCopyCompany.profitLoss = (parseFloat(action.currentPrice) - parseFloat(shallowCopyCompany.price)) * shallowCopyCompany.quantity;
             shallowCopyCompany.total = shallowCopyCompany.total.toFixed(2);
+            shallowCopyCompany.profitLoss = shallowCopyCompany.profitLoss.toFixed(2);
 
             shallowCopyAsset[companyName] = shallowCopyCompany;
             
@@ -40,6 +48,12 @@ const reducer = (state = initialState, action) => {
             }
 
             return shallowCopyAsset;
+            
+        case "UPDATE_COMPANY_PROFIT_LOSS":
+            return {
+                ...state,
+                [action.company]: action.assetDetail,
+            }
         default:
             return state;
     }

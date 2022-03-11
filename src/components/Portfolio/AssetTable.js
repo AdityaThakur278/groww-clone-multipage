@@ -14,6 +14,7 @@ function AssetTable(props) {
                 <p className="average-price">Price</p>
                 <p className="quantity">Units</p>
                 <p className="total">Total</p>
+                <p className="profit-loss">Profit/ Loss</p>
                 <p className="watchlist">Watchlist</p>
             </div>
 
@@ -31,6 +32,7 @@ function AssetTable(props) {
                                 price={assets[company].price}
                                 quantity={assets[company].quantity}
                                 total={assets[company].total}
+                                profitLoss={assets[company].profitLoss}
                             />
                 })
             }
