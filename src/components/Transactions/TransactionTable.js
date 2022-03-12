@@ -8,15 +8,6 @@ function TransactionTable(props) {
     const pendindTransactionID = props.transactionID.filter(id => props.transactions[id].transactionType === "pending");
     const completeTransactionID = props.transactionID.filter(id => props.transactions[id].transactionType === "complete");
 
-    const tableStyle = {
-        transactionType: {width: props.cancel ? "9%" : "10%"},
-        companyName: {width: props.cancel ? "25%" : "32%"},
-        targetPrice: {width: props.cancel ? "20%" : "23%"},
-        quantity: {width: props.cancel ? "12%" : "13%"},
-        total: {width: props.cancel ? "22%" : "22%"},
-        cancel: {width: "12%"},
-    }
-
     return (
         <div className="transaction-table">
             <div className="heading">
@@ -25,12 +16,12 @@ function TransactionTable(props) {
 
             <div className="table">
                 <div className="table-heading">
-                    <p style={tableStyle.transactionType} className="transaction-type">Type</p>
-                    <p style={tableStyle.companyName} className="company-name">Company</p>
-                    <p style={tableStyle.targetPrice} className="target-price">Target Price</p>
-                    <p style={tableStyle.quantity} className="quantity">Quantity</p>
-                    <p style={tableStyle.total} className="total">Total</p>
-                    {props.type === "Pending" ? <p style={tableStyle.cancel} className='cancel'>Cancel</p> : null}
+                    <p className="transaction-type">Type</p>
+                    <p className="company-name">Company</p>
+                    <p className="target-price">Target Price</p>
+                    <p className="quantity">Quantity</p>
+                    <p className="total">Total</p>
+                    <p className='cancel-modify-status'>{props.type === "Pending" ? "Cancel/Modify" : "Status"}</p>
                 </div>
             </div>
 
@@ -46,11 +37,11 @@ function TransactionTable(props) {
                         key = {id}
                         id = {id}
                         type = {props.transactions[id].type}
+                        transactionType = {props.transactions[id].transactionType}
                         company={props.transactions[id].company}
                         price={props.transactions[id].price}
                         quantity={props.transactions[id].quantity}
                         total={props.transactions[id].total}
-                        cancel={true}
                     />)
                 
                 : completeTransactionID.length === 0
@@ -63,11 +54,12 @@ function TransactionTable(props) {
                         key = {id}
                         id = {id}
                         type = {props.transactions[id].type}
+                        transactionType = {props.transactions[id].transactionType}
                         company={props.transactions[id].company}
                         price={props.transactions[id].price}
                         quantity={props.transactions[id].quantity}
                         total={props.transactions[id].total}
-                        cancel={false}
+                        status={props.transactions[id].status}
                     />)
             }
         </div>

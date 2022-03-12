@@ -8,25 +8,9 @@
 }
 
 .transactions-container .pending-transaction {
-    width: 50%;
+    width: 52%;
 }
 
 .transactions-container .complete-transaction {
-    width: 45%;
-}
-
-.transactions-container .cancel-button {
-    background-color: #E34234;
-    border: none;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 12%;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.7s;
-}
-
-.transactions-container .cancel-button:hover {
-    transform: scale(1.2);
+    width: 46%;
 }

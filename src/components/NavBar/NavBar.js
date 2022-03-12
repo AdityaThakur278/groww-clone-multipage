@@ -102,7 +102,7 @@ const mapDispatchToProps = (dispatch) => {
         substractFromPendingBlockedAmount: (amount) => dispatch(substractFromPendingBlockedAmount(amount)),
         substractFromAssets: (company, transactionDetail, currentPrice) => dispatch(substractFromAssets(company, transactionDetail, currentPrice)),
         addToWallet: amount => dispatch(addToWallet(amount)),
-        substractFromPendingBlockedStocks: (company, units) => dispatch(substractFromPendingBlockedStocks(company, units)),
+        substractFromPendingBlockedStocks: (company, units, id) => dispatch(substractFromPendingBlockedStocks(company, units, id)),
     };
 };
 

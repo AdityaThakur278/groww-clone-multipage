@@ -23,22 +23,45 @@
     color: #44475b;
     width: 100%;
   }
-  
-  .transactions-container .transaction-type {
-    width: 10%;
-    padding: 2% 1.5%;
-    text-align: center;
-  }
-  
+    
+  .transactions-container .transaction-type,
   .transactions-container .company-name,
   .transactions-container .target-price,
   .transactions-container .quantity,
   .transactions-container .total,
-  .transactions-container .cancel {  
+  .transactions-container .cancel-modify-status {  
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2% 1.5%;
+  }
+
+  .transactions-container .transaction-type {
+    width: 9%;
+  }
+
+  .transactions-container .company-name {
+      width: 24%;
+  }
+
+  .transactions-container .target-price {
+    width: 18%;
+  }
+
+  .transactions-container .quantity {
+    width: 12%;
+  }
+
+  .transactions-container .total {
+    width: 20%;
+  }
+
+  .transactions-container .cancel-modify { 
+    justify-content: space-between;
+  }
+
+  .transactions-container .cancel-modify-status {
+    width: 17%;
   }
   
   .transactions-container .no-transaction {

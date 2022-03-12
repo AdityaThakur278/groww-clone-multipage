@@ -27,18 +27,20 @@ export const deletePendingTransaction = (id) => {
     }
 }
 
-export const addToPendingBlockedStocks = (company, units) => {
+export const addToPendingBlockedStocks = (company, units, id) => {
     return {
         type: "ADD_TO_PENDING_BLOCKED_STOCKS",
         company,
-        units
+        units,
+        id
     }
 }
 
-export const substractFromPendingBlockedStocks = (company, units) => {
+export const substractFromPendingBlockedStocks = (company, units, id) => {
     return {
         type: "SUBSTRACT_FROM_PENDING_BLOCKED_STOCKS",
         company,
-        units
+        units,
+        id
     }
 }

@@ -13,7 +13,7 @@ function BuySellForm(props) {
 
     const sharesOwned = props.assets[props.companyName] === undefined ? 0 : props.assets[props.companyName].quantity;
     let pendingBlockedStocks = props.pendingBlockedStocks[props.companyName];
-    pendingBlockedStocks = pendingBlockedStocks === undefined ? 0 : pendingBlockedStocks;
+    pendingBlockedStocks = pendingBlockedStocks === undefined ? 0 : pendingBlockedStocks.units;
 
     function buyTabSelect() {
         props.buyTabChange(true);

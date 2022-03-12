@@ -1,45 +1,51 @@
 import React from 'react'
 import "./TransactionRow.css"
-import { deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks } from "../../Redux/transaction/transactionAction"
+import { deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks, addToTransactions } from "../../Redux/transaction/transactionAction"
 import { connect } from 'react-redux';
+import { v4 } from 'uuid';
 
 function TransactionRow(props) {
 
-    function transactionTypeStyle() {
-        if(props.type === "B") return "transaction-type-buy";
-        else if(props.type ==="S") return "transaction-type-sell";
-    }
-
-    function handleCancelTransaction(total, company, quantity) {
+    function handleCancelTransaction() {
         props.deletePendingTransaction(props.id);
-        if(props.type === "B") props.substractFromPendingBlockedAmount(total);
-        if(props.type === "S") props.substractFromPendingBlockedStocks(company, quantity);
+        if(props.type === "B") props.substractFromPendingBlockedAmount(props.total);
+        if(props.type === "S") props.substractFromPendingBlockedStocks(props.company, props.quantity, props.id);
+
+        const newId = v4();
+        props.addToTransactions(newId, {
+            type: props.type,
+            status: "Cancelled",
+            transactionType: "complete",
+            company: props.company,
+            price: props.price,
+            quantity: props.quantity,
+            total: props.total,
+        })
     }
 
-    const tableStyle = {
-        transactionType: {width: props.cancel ? "9%" : "10%"},
-        companyName: {width: props.cancel ? "25%" : "32%"},
-        targetPrice: {width: props.cancel ? "20%" : "23%"},
-        quantity: {width: props.cancel ? "12%" : "13%"},
-        total: {width: props.cancel ? "22%" : "22%"},
-        cancel: {width: "12%"},
-    }
+    const transactionStatusStyle = props.status === "Successful" ? "successful" : "cancelled";
+    const transactionTypeStyle = props.type === "B" ? "transaction-type-buy" : "transaction-type-sell";
 
     return (
         <div className="company-row">
-            <p style={tableStyle.transactionType} className={transactionTypeStyle()}>{props.type}</p>
-            <p style={tableStyle.companyName} className="company-name">{props.company}</p>
-            <p style={tableStyle.targetPrice} className="target-price">{props.price}</p>
-            <p style={tableStyle.quantity} className="quantity">{props.quantity}</p>
-            <p style={tableStyle.total} className="total">{props.total}</p>
+            <p className={"transaction-type " + transactionTypeStyle}>{props.type}</p>
+            <p className="company-name">{props.company}</p>
+            <p className="target-price">{props.price}</p>
+            <p className="quantity">{props.quantity}</p>
+            <p className="total">{props.total}</p>
             {
-                props.cancel
+                props.transactionType === "pending"
                 ? (
-                    <p style={tableStyle.cancel} className='cancel'>
-                        <button onClick={() => handleCancelTransaction(props.total, props.company, props.quantity)} className="cancel-button">C</button>
+                    <p className='cancel-modify-status cancel-modify'>
+                        <button onClick={() => handleCancelTransaction()} className="cancel-button">C</button>
+                        <button className="modify-button">M</button>
                     </p>
                 )
-                : null
+                : (
+                    <div className='cancel-modify-status'>
+                        <p className={transactionStatusStyle}>{props.status}</p>
+                    </div>
+                )
             }
         </div>
     );
@@ -49,7 +55,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         deletePendingTransaction: index => dispatch(deletePendingTransaction(index)),
         substractFromPendingBlockedAmount: amount => dispatch(substractFromPendingBlockedAmount(amount)),
-        substractFromPendingBlockedStocks: (company, units) => dispatch(substractFromPendingBlockedStocks(company, units)),
+        substractFromPendingBlockedStocks: (company, units, id) => dispatch(substractFromPendingBlockedStocks(company, units, id)),
+        addToTransactions: (id, transaction) => dispatch(addToTransactions(id, transaction))
     }
 }
 

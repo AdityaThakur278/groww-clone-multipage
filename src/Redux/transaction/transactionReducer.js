@@ -5,6 +5,15 @@ const initialState = {
     pendingBlockedStocks: {},
 }
 
+/*
+pendingBlockedStocks = {
+    company1: {
+        units: value,
+        transactions: []
+    }
+}
+*/
+
 const reducer = (state=initialState, action) => {
 
     function getTransactionIDindex(id, transactionID) {
@@ -46,19 +55,34 @@ const reducer = (state=initialState, action) => {
             }
         case "ADD_TO_PENDING_BLOCKED_STOCKS":
             let prevBlocked = state.pendingBlockedStocks[action.company];
-            prevBlocked = prevBlocked === undefined ? 0 : prevBlocked;
+            const addToPendingBlocked = prevBlocked === undefined ? {
+                units: parseFloat(action.units),
+                transactions: [action.id],
+            } : {
+                units: prevBlocked.units + parseFloat(action.units),
+                transactions: [...prevBlocked.transactions, action.id],
+            };
             return {
                 ...state,
                 pendingBlockedStocks: {
                     ...state.pendingBlockedStocks,
-                    [action.company]: parseFloat(prevBlocked) + parseFloat(action.units),
+                    [action.company]: addToPendingBlocked,
                 }
             }
         case "SUBSTRACT_FROM_PENDING_BLOCKED_STOCKS":
             const shallowCopyPendingBlockedStocks = {...state.pendingBlockedStocks};
-            shallowCopyPendingBlockedStocks[action.company] -= parseFloat(action.units);
-            if(shallowCopyPendingBlockedStocks[action.company] === 0) {
+            let shallowCopyTransaction = [...shallowCopyPendingBlockedStocks[action.company].transactions];
+            const blockedUnits = shallowCopyPendingBlockedStocks[action.company].units - parseFloat(action.units);
+            
+            if(blockedUnits === 0) {
                 delete shallowCopyPendingBlockedStocks[action.company];
+            }
+            else {
+                shallowCopyTransaction = shallowCopyTransaction.filter(id => id !== action.id);
+                shallowCopyPendingBlockedStocks[action.company] = {
+                    units: blockedUnits,
+                    transactions: shallowCopyTransaction,
+                }
             }
 
             return {

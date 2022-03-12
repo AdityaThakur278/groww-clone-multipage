@@ -69,6 +69,7 @@ function buyTransactionSuccessful(funcArgs) {
 
     funcArgs.addToTransactions(newID, {
         type: "B",
+        status: "Successful",
         transactionType: "complete",
         company,
         price: funcArgs.targetPrice,
@@ -96,6 +97,7 @@ function sellTransactionSuccessful(funcArgs) {
 
     funcArgs.addToTransactions(newID, {
         type: "S",
+        status: "Successful",
         transactionType: "complete",
         company: funcArgs.company,
         price: funcArgs.targetPrice,
@@ -114,5 +116,5 @@ function sellTransactionSuccessful(funcArgs) {
 
     funcArgs.addToWallet(funcArgs.total);
 
-    funcArgs.substractFromPendingBlockedStocks(funcArgs.company, funcArgs.quantity);
+    funcArgs.substractFromPendingBlockedStocks(funcArgs.company, funcArgs.quantity, newID);
 }

@@ -38,7 +38,7 @@ function BuySellTransaction(props) {
     function sellTransaction() {
         const sharesOwned = props.assets[props.buySellCompany] === undefined ? 0 : props.assets[props.buySellCompany].quantity;
         const shareQuantity = props.shareQuantity;
-        const pendingBlockedStocks = props.pendingBlockedStocks[props.buySellCompany] === undefined ? 0 : props.pendingBlockedStocks[props.buySellCompany];
+        const pendingBlockedStocks = props.pendingBlockedStocks[props.buySellCompany] === undefined ? 0 : props.pendingBlockedStocks[props.buySellCompany].units;
         const totalAmount = parseFloat(props.shareQuantity) * parseFloat(props.targetPrice);
 
         if(parseFloat(shareQuantity) > parseFloat(sharesOwned)) {
@@ -61,7 +61,7 @@ function BuySellTransaction(props) {
             quantity: props.shareQuantity,
             total: totalAmount.toFixed(2),
         });
-        props.addToPendingBlockedStocks(props.buySellCompany, props.shareQuantity);
+        props.addToPendingBlockedStocks(props.buySellCompany, props.shareQuantity, id);
         alert("Transaction added to pending transaction list");
     }
 
@@ -107,7 +107,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addToTransactions: (id, transaction) => dispatch(addToTransactions(id, transaction)),
         addToPendingBlockedAmount: (amount) => dispatch(addToPendingBlockedAmount(amount)),
-        addToPendingBlockedStocks: (company, units) => dispatch(addToPendingBlockedStocks(company, units)),
+        addToPendingBlockedStocks: (company, units, id) => dispatch(addToPendingBlockedStocks(company, units, id)),
     }
 }
 

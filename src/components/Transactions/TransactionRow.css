@@ -10,7 +10,6 @@
 
 .transactions-container .transaction-type-buy,
 .transactions-container .transaction-type-sell {
-  width: 10%;
   padding: 2% 1.5%;
   display: flex;
   align-items: center;
@@ -27,4 +26,46 @@
   color: red;
   font-weight: 700;
   font-size: 1.1rem;
+}
+
+.transactions-container .cancel-button {
+  background-color: #E34234;
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 12%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+.transactions-container .cancel-button:hover {
+  transform: scale(1.2);
+}
+
+.transactions-container .modify-button {
+  background-color: #00d09c;
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 12%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+.transactions-container .modify-button:hover {
+  transform: scale(1.2);
+}
+
+.transactions-container .cancel-modify-status .successful {
+  color: #00d09c;
+  font-weight: 700;
+}
+
+.transactions-container .cancel-modify-status .cancelled {
+  color: #E34234;
+  font-weight: 700;
 }
