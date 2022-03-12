@@ -3,6 +3,7 @@ const initialState = {
     transactionID: [],
     pendingBlockedAmount: 0,
     pendingBlockedStocks: {},
+    blockedTransactions: {},
 }
 
 /*
@@ -88,6 +89,28 @@ const reducer = (state=initialState, action) => {
             return {
                 ...state,
                 pendingBlockedStocks: shallowCopyPendingBlockedStocks,
+            }
+        case "ADD_TO_BLOCKED_TRANSACTION":
+            const shallowCopyBlockedTransactions = {...state.blockedTransactions};
+            shallowCopyBlockedTransactions[action.id] = true;
+            return {
+                ...state,
+                blockedTransactions: shallowCopyBlockedTransactions,
+            }
+        case "REMOVE_FROM_BLOCKED_TRANSACTION":
+            const shallowCopyBlockedTransaction = {...state.blockedTransactions};
+            delete shallowCopyBlockedTransaction[action.id] 
+            return {
+                ...state,
+                blockedTransactions: shallowCopyBlockedTransaction,
+            }
+        case "MODIFY_PENDING_TRANSACTION":
+            return {
+                ...state, 
+                transactions: {
+                    ...state.transactions,
+                    [action.id] : action.transaction,
+                },
             }
         default:
             return state;

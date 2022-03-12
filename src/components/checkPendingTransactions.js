@@ -16,6 +16,11 @@ export const checkPendingTransactions = (funcArgs) => {
 
     for(let i=transactionID.length-1; i>=0; i--) {
         const id = transactionID[i];
+
+        // Check for blocked transaction
+        const isBlocked = funcArgs.blockedTransactions[id] === undefined ? false : true;
+        if(isBlocked) continue;
+
         const transactionType = transactions[id].transactionType;
         if(transactionType !== "pending") continue;
 

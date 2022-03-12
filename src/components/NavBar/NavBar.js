@@ -40,6 +40,7 @@ function NavBar(props) {
             substractFromAssets: props.substractFromAssets,
             addToWallet: props.addToWallet,
             substractFromPendingBlockedStocks: props.substractFromPendingBlockedStocks,
+            blockedTransactions: props.blockedTransactions,
         }
         checkPendingTransactions(funcArguments);
 
@@ -88,6 +89,7 @@ const mapStateToProps = (state) => {
         transactionID: state.transaction.transactionID,
         loading: state.stockData.loading,
         walletBalance: state.wallet.balance,
+        blockedTransactions: state.transaction.blockedTransactions,
     }
 }
 

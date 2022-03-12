@@ -6,6 +6,7 @@ import BuySellQuantity from './BuySellQuantity'
 import BuySellTargetPrice from './BuySellTargetPrice'
 import BuySellTransaction from './BuySellTransaction'
 import {buyTabChange} from "../../Redux/buySellForm/buySellAction"
+import ModifyBuySellTransaction from '../Transactions/ModifyBuySellTransaction'
 
 function BuySellForm(props) {
     const buyTab = props.buyTab ? "selected" : "";
@@ -23,10 +24,30 @@ function BuySellForm(props) {
         props.buyTabChange(false);
     }
 
+    // For modify transaction
+    let pendingBlockedAmount = parseFloat(props.pendingBlockedAmount);
+    if(props.type === "B") pendingBlockedAmount = parseFloat(props.pendingBlockedAmount) - parseFloat(props.total);
+    if(props.type === "S") pendingBlockedStocks = parseFloat(pendingBlockedStocks) - parseFloat(props.quantity);
+    const isModify = props.isModify === undefined ? false : true; 
+    const crossButtonStyle = {
+        backgroundColor: "transparent",
+        border: "none",
+        fontSize: "22px",
+        fontWeight: "700",
+        cursor: "pointer",
+    }
+
     return (
         <div className="buy-sell-form">
-            <div className="company-name">{props.companyName}</div>
-
+            {
+                isModify 
+                ?   <div style={{justifyContent: "space-between"}} className="company-name">
+                        <p>{props.companyName}</p>
+                        <button style={crossButtonStyle} onClick={() => props.setModifyModal(false)}>X</button>
+                    </div>
+                : <div className="company-name">{props.companyName}</div>
+            }
+    
             <div className="buy-sell-sub-container">
                     <div className="buy-sell-tab">
                         <p className={"buy-sell-tab-item " + buyTab } onClick={buyTabSelect}>BUY</p>
@@ -40,12 +61,25 @@ function BuySellForm(props) {
 
                     <p className="buy-sell-info">
                         {props.buyTab 
-                            ? "₹" + props.pendingBlockedAmount +  " of wallet balance(₹" + props.walletBalance + ") is blocked in pending transaction"
+                            ? "₹" + pendingBlockedAmount +  " of wallet balance(₹" + props.walletBalance + ") is blocked in pending transaction"
                             : pendingBlockedStocks + "-units of shares owned( " + sharesOwned + " ) is blocked in pending transaction"  
                         }
                     </p>
-
-                    <BuySellTransaction/>
+                    
+                    {
+                        isModify 
+                        ?   <ModifyBuySellTransaction 
+                                setModifyModal={props.setModifyModal}
+                                id = {props.id}
+                                type = {props.type}
+                                transactionType = {props.transactionType}
+                                company={props.company}
+                                price={props.price}
+                                quantity={props.quantity}
+                                total={props.total}
+                            />
+                        :   <BuySellTransaction/>
+                    }
             </div>
         </div>
   )

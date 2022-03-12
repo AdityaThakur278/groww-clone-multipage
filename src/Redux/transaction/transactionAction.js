@@ -44,3 +44,25 @@ export const substractFromPendingBlockedStocks = (company, units, id) => {
         id
     }
 }
+
+export const addToBlockedTransaction = (id) => {
+    return {
+        type: "ADD_TO_BLOCKED_TRANSACTION",
+        id,
+    }
+}
+
+export const removeFromBlockedTransaction = (id) => {
+    return {
+        type: "REMOVE_FROM_BLOCKED_TRANSACTION",
+        id,
+    }
+}
+
+export const modifyPendingTransaction = (id, transaction) => {
+    return {
+        type: "MODIFY_PENDING_TRANSACTION",
+        id,
+        transaction,
+    }
+}

@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./TransactionRow.css"
 import { deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks, addToTransactions } from "../../Redux/transaction/transactionAction"
+import { buySellCompanyChange, marketPriceValueChange, buyTabChange, shareQuantityValueChange, targetPriceChange } from "../../Redux/buySellForm/buySellAction"
+import { addToBlockedTransaction } from "../../Redux/transaction/transactionAction"
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
+import ModifyModal from './ModifyModal';
+
+const getCompanyIndex = (stocksData, company) => {
+    for(let i=0; i<stocksData.length; i++) {
+        if(stocksData[i].company === company) {
+            return i;
+        }
+    }
+}
 
 function TransactionRow(props) {
+
+    const [modifyModal, setModifyModal] = useState(false);
+
+    function handleModifyTransaction() {
+        // Block this transaction
+        props.addToBlockedTransaction(props.id)
+
+        // Change BuySellForm data
+        props.buySellCompanyChange(props.company);
+        const index = getCompanyIndex(props.stocksData, props.company);
+        const marketPrice = props.stocksData[index].ltp;
+        props.marketPriceValueChange(marketPrice);
+        props.buyTabChange(props.type === "B" ? true : false);
+        props.shareQuantityValueChange(props.quantity);
+        props.targetPriceChange(props.price);
+
+        // Open Modal
+        setModifyModal(true);
+    }
 
     function handleCancelTransaction() {
         props.deletePendingTransaction(props.id);
@@ -29,7 +59,7 @@ function TransactionRow(props) {
     return (
         <div className="company-row">
             <p className={"transaction-type " + transactionTypeStyle}>{props.type}</p>
-            <p className="company-name">{props.company}</p>
+            <p className="companyname">{props.company}</p>
             <p className="target-price">{props.price}</p>
             <p className="quantity">{props.quantity}</p>
             <p className="total">{props.total}</p>
@@ -37,8 +67,8 @@ function TransactionRow(props) {
                 props.transactionType === "pending"
                 ? (
                     <p className='cancel-modify-status cancel-modify'>
-                        <button onClick={() => handleCancelTransaction()} className="cancel-button">C</button>
-                        <button className="modify-button">M</button>
+                        <button onClick={handleCancelTransaction} className="cancel-button">C</button>
+                        <button onClick={handleModifyTransaction} className="modify-button">M</button>
                     </p>
                 )
                 : (
@@ -47,8 +77,27 @@ function TransactionRow(props) {
                     </div>
                 )
             }
+
+            {
+                modifyModal &&  <ModifyModal
+                                    setModifyModal={setModifyModal}
+                                    id = {props.id}
+                                    type = {props.type}
+                                    transactionType = {props.transactionType}
+                                    company={props.company}
+                                    price={props.price}
+                                    quantity={props.quantity}
+                                    total={props.total}
+                                />
+            }
         </div>
     );
+}
+
+const mapStateToProps = (state) => {
+    return {
+        stocksData: state.stockData.stocksData,
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -56,8 +105,14 @@ const mapDispatchToProps = (dispatch) => {
         deletePendingTransaction: index => dispatch(deletePendingTransaction(index)),
         substractFromPendingBlockedAmount: amount => dispatch(substractFromPendingBlockedAmount(amount)),
         substractFromPendingBlockedStocks: (company, units, id) => dispatch(substractFromPendingBlockedStocks(company, units, id)),
-        addToTransactions: (id, transaction) => dispatch(addToTransactions(id, transaction))
+        addToTransactions: (id, transaction) => dispatch(addToTransactions(id, transaction)),
+        buySellCompanyChange: value => dispatch(buySellCompanyChange(value)),
+        marketPriceValueChange: value => dispatch(marketPriceValueChange(value)),
+        buyTabChange: value => dispatch(buyTabChange(value)),
+        shareQuantityValueChange: value => dispatch(shareQuantityValueChange(value)),
+        targetPriceChange: value => dispatch(targetPriceChange(value)),
+        addToBlockedTransaction: id => dispatch(addToBlockedTransaction(id)),
     }
 }
 
-export default connect(null, mapDispatchToProps)(TransactionRow)
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionRow)

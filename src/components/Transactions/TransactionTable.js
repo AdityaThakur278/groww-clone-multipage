@@ -17,7 +17,7 @@ function TransactionTable(props) {
             <div className="table">
                 <div className="table-heading">
                     <p className="transaction-type">Type</p>
-                    <p className="company-name">Company</p>
+                    <p className="companyname">Company</p>
                     <p className="target-price">Target Price</p>
                     <p className="quantity">Quantity</p>
                     <p className="total">Total</p>
