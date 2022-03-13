@@ -1,14 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import CompanyDataRow from './CompanyDataRow';
+import { deleteWatchlist, renameWatchlist } from "../../Redux/watchlist/watchlistActions"
 import "./CompanyDataTable.css"
 
 function CompanyDataTable(props) {
-    
+
+	const [watchlistRename, setWatchlistRename] = useState(false);
+	const [watchlistRenameInput, setWatchlistRenameInput] = useState("");
+
+	function handleDeleteWatchlist() {
+		if(window.confirm("Are you sure you want to delete '" + props.watchlists[props.id].watchlistName + "' watchlist")) 
+			props.deleteWatchlist(props.id)
+	}
+
+	function handleRenameWatchlist() {
+		setWatchlistRenameInput(props.watchlists[props.id].watchlistName)
+		setWatchlistRename(true)
+	}
+
+	function handleRenameConfirm() {
+		props.renameWatchlist(props.id, watchlistRenameInput);
+		alert("Watchlist Renamed!");
+		setWatchlistRename(false)
+	}
+
 	return (
 		<div className="company-data">
 			<div className="heading">
-				<p className="top-heading">Watchlist</p>
+				{
+					watchlistRename 
+					? 	<div className="watchlist-rename-container">
+							<input className="watchlist-rename-input" type="text" value={watchlistRenameInput} onChange={e => setWatchlistRenameInput(e.target.value)}></input>
+							<button style={{padding: "1.5%"}} className="watchlist-rename-button" onClick={handleRenameConfirm}>Rename</button>
+							<button style={{padding: "1.5%"}} className="watchlist-delete-button" onClick={() => setWatchlistRename(false)}>Cancel</button>
+						</div>
+					: <p className="top-heading">{props.watchlists[props.id].watchlistName}</p>
+				}
+				<div style={{display: watchlistRename ? "none" : "flex"}} className="rename-delete">
+					<button className="watchlist-rename-button" onClick={handleRenameWatchlist}>Rename</button>
+					<button className="watchlist-delete-button" onClick={handleDeleteWatchlist}>Delete</button>
+				</div>
 			</div>
 
 			<div className="table">
@@ -22,14 +54,14 @@ function CompanyDataTable(props) {
 
 				<div className="table-content">
 					{
-						props.defaultWatchlist.length === 0
+						props.watchlists[props.id].companies.length === 0
                         ? (
                             <div className='no-data'>
                                 No Companies in Watchlist
                             </div>
                         )
                         : (
-                            props.defaultWatchlist.map(company => <CompanyDataRow key={company} company={company}/>)
+                            props.watchlists[props.id].companies.map(company => <CompanyDataRow key={company} company={company}/>)
                         )
 					}
 				</div>
@@ -40,8 +72,15 @@ function CompanyDataTable(props) {
 
 const mapStateToProps = (state) => {
 	return {
-		defaultWatchlist: state.watchlist.defaultWatchlist,
-	};
-};
+		watchlists: state.watchlist.watchlists,
+	}
+}
 
-export default connect(mapStateToProps, null)(CompanyDataTable)
+const mapDispatchToProps = (dispatch) => {
+	return {
+		deleteWatchlist: id => dispatch(deleteWatchlist(id)),
+		renameWatchlist: (id, watchlistName) => dispatch(renameWatchlist(id, watchlistName)),
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyDataTable)

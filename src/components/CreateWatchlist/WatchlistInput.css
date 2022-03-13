@@ -1,0 +1,64 @@
+.create-watchlist-container {
+  padding: 4%;
+  background-color: #00bdb1;
+  color: white;
+  margin-bottom: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-watchlist-name {
+  text-align: center;
+  font-size: 1.3rem;
+  letter-spacing: 5px;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+.create-watchlist-input {
+  background-color: white;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.watchlist-input {
+  width: 50%;
+  border: none;
+  height: 2.2rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: #00d09c;
+  background-color: #e5faf5;
+  font-weight: 700;
+}
+
+.watchlist-input:focus {
+  outline: none;
+}
+
+.watchlist-add-button {
+  width: 20%;
+  margin-left: 5%;
+  background-color: #00d09c;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  padding: 2% 0;
+  cursor: pointer;
+}
+
+.watchlist-cancel-button {
+  width: 20%;
+  margin-left: 5%;
+  background-color: #e34234;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 2% 0;
+  cursor: pointer;
+}

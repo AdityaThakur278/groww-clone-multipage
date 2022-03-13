@@ -6,6 +6,8 @@ import BuySellQuantity from './BuySellQuantity'
 import BuySellTargetPrice from './BuySellTargetPrice'
 import BuySellTransaction from './BuySellTransaction'
 import {buyTabChange} from "../../Redux/buySellForm/buySellAction"
+import { removeFromBlockedTransaction } from "../../Redux/transaction/transactionAction"
+
 import ModifyBuySellTransaction from '../Transactions/ModifyBuySellTransaction'
 
 function BuySellForm(props) {
@@ -37,13 +39,18 @@ function BuySellForm(props) {
         cursor: "pointer",
     }
 
+    function handleCrossButtonClick() {
+        props.removeFromBlockedTransaction(props.id);
+        props.setModifyModal(false)
+    }
+
     return (
         <div className="buy-sell-form">
             {
                 isModify 
                 ?   <div style={{justifyContent: "space-between"}} className="company-name">
                         <p>{props.companyName}</p>
-                        <button style={crossButtonStyle} onClick={() => props.setModifyModal(false)}>X</button>
+                        <button style={crossButtonStyle} onClick={handleCrossButtonClick}>X</button>
                     </div>
                 : <div className="company-name">{props.companyName}</div>
             }
@@ -98,7 +105,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        buyTabChange: (value) => dispatch(buyTabChange(value))
+        buyTabChange: (value) => dispatch(buyTabChange(value)),
+        removeFromBlockedTransaction: id => dispatch(removeFromBlockedTransaction(id)),
     }
 }
 

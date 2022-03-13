@@ -1,16 +1,18 @@
+.watchlist-page .company-data {
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+  margin-top: 5%;
+}
+
 .watchlist-page .heading {
-    padding: 0 0 3% 0;
+    padding: 2.5%;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
+    align-items: center;
   }
 .watchlist-page  .top-heading {
-    font-weight: 400;
+    font-weight: 700;
     font-size: 1.7rem;
     padding-right: 1%;
-  }
-
-  .watchlist-page .table {
-    box-shadow: 1px 1px 3px 3px #e6e6e6;
   }
   
   .watchlist-page .table-heading {
@@ -56,5 +58,52 @@
   .watchlist-page .no-data {
       text-align: center;
       font-size: 1.5rem;
-      padding: 5% 0;
+      padding: 4% 0;
+  }
+
+  .rename-delete {
+    display: flex;
+    justify-content: space-between;
+    width: 11rem;
+  }
+
+  .watchlist-page .watchlist-rename-button {
+    background-color: #00d09c;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 4%;
+    cursor: pointer;
+  }
+
+  .watchlist-page .watchlist-delete-button {
+    background-color: #e34234;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 4%;
+    cursor: pointer;
+  }
+
+  .watchlist-page .watchlist-rename-container {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+  }
+
+  .watchlist-page .watchlist-rename-input {
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    color: #00d09c;
+    background-color: #e5faf5;
+    font-weight: 700;
+  }
+
+  .watchlist-page .watchlist-rename-input:focus {
+    outline: none;
   }
