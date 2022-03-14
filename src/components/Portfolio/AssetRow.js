@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import AddToWatchlist from '../Home/AddToWatchlist';
 import { updateCompanyProfitLoss } from "../../Redux/assets/assetsActions"
+import addImage from "../../images/add.png"
 import "./AssetRow.css"
+import AddToWatchlistModal from '../Watchlist/AddToWatchlistModal';
 
 const getCompanyIndex = (stocksData, company) => {
     for(let i=0; i<stocksData.length; i++) {
@@ -13,6 +14,8 @@ const getCompanyIndex = (stocksData, company) => {
 }
 
 function AssetRow(props) {
+
+    const [addToWatchlistModal, setAddToWatchlistModal] = useState(false);
 
     const profitLossStyle = parseFloat(props.profitLoss) < 0 ? "loss" : "profit";
     const index = getCompanyIndex(props.stocksData, props.company);
@@ -37,10 +40,22 @@ function AssetRow(props) {
             <p className="total">{"₹"+props.total}</p>
             <p className={"profit-loss " + profitLossStyle}>{"₹"+Math.abs(props.profitLoss)}</p>
 
-            <AddToWatchlist 
-                company={props.company} 
-                index={index}
-            />
+            <div className="watchlist">
+                <img 
+                    className="watchlist-button" 
+                    width="30px" 
+                    src= {addImage} 
+                    alt="Add"
+                    onClick={() => setAddToWatchlistModal(true)}
+                />
+
+                {
+                    addToWatchlistModal &&  <AddToWatchlistModal
+                                                setAddToWatchlistModal={setAddToWatchlistModal}
+                                                company={props.company}
+                                            />
+                }
+            </div>
         </div>
     )
 }

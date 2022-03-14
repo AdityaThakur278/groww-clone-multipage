@@ -41,7 +41,7 @@ function CompanyDataRow(props) {
 
             <BuySellButton type="buy" company={props.company}/>
             <BuySellButton type="sell" company={props.company}/>
-            <RemoveFromWatchlist company={props.company}/>
+            <RemoveFromWatchlist company={props.company} watchlistID={props.watchlistID}/>
         </div>
     );
 }

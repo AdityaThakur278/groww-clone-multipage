@@ -61,7 +61,7 @@ function CompanyDataTable(props) {
                             </div>
                         )
                         : (
-                            props.watchlists[props.id].companies.map(company => <CompanyDataRow key={company} company={company}/>)
+                            props.watchlists[props.id].companies.map(company => <CompanyDataRow key={company} company={company} watchlistID={props.id}/>)
                         )
 					}
 				</div>

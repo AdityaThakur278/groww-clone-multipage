@@ -19,3 +19,11 @@
   font-size: 13px;
   color: red;
 }
+
+.stock-data-area .watchlist-button {
+  transition: 0.7s;
+}
+
+.stock-data-area .watchlist-button:hover {
+  transform: scale(1.2);
+}

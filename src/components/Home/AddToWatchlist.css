@@ -1,7 +1,0 @@
-.watchlist-button {
-    transition: 0.7s;
-}
-
-.watchlist-button:hover {
-    transform: scale(1.2);
-}

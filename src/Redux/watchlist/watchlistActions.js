@@ -1,19 +1,3 @@
-export const addToWatchlist = (payload) => {
-    return {
-        type: "ADD_TO_WATCHLIST",
-        payload,
-    }
-}
-
-export const removeFromWatchlist = (payload) => {
-    return {
-        type: "REMOVE_FROM_WATCHLIST",
-        payload,
-    }
-}
-
-// New
-
 export const createWatchlist = (id, watchlistName) => {
     return {
         type: "CREATE_WATCHLIST",
@@ -34,5 +18,21 @@ export const renameWatchlist = (id, watchlistName) => {
         type: "RENAME_WATCHLIST",
         id,
         watchlistName,
+    }
+}
+
+export const addCompanyToWatchlist = (id, company) => {
+    return {
+        type: "ADD_COMPANY_TO_WATCHLIST",
+        id,
+        company,
+    }
+}
+
+export const removeCompanyFromWatchlist = (id, company) => {
+    return {
+        type: "REMOVE_COMPANY_FROM_WATCHLIST",
+        id,
+        company,
     }
 }

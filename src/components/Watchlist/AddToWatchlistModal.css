@@ -1,0 +1,38 @@
+.add-to-watchlist-modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(128,128,128, 0.5);
+    z-index: 1;
+}
+
+.add-to-watchlist-modal .add-to-watchlist-container {
+    background-color: white;
+    font-size: 1.3rem;
+    width: 20rem;
+    box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.add-to-watchlist-modal .titleCloseBtn {
+    padding: 4%;
+    background-color: #e5faf5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-to-watchlist-modal .cross-button {
+    background-color: transparent;
+    border: none;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.add-to-watchlist-modal .no-watchlist {
+    padding: 3%;
+}

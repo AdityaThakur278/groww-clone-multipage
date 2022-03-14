@@ -20,7 +20,7 @@
     width: 24%;
 }
 
-.no-watchlist {
+.watchlist-page .no-watchlist {
     box-shadow: 1px 1px 3px 3px #e6e6e6;
     padding: 3%;
     margin-top: 8%;

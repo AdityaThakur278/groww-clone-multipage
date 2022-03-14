@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BuySellButton from '../Watchlist/BuySellButton';
-import AddToWatchlist from './AddToWatchlist'
+import addImage from "../../images/add.png"
 import "./CompanyDataRow.css"
+import AddToWatchlistModal from '../Watchlist/AddToWatchlistModal';
 
 function priceChangeStyle(value) {
     if(parseFloat(value) < 0) {
@@ -13,6 +14,9 @@ function priceChangeStyle(value) {
 }
 
 function CompanyDataRow(props) {
+
+    const [addToWatchlistModal, setAddToWatchlistModal] = useState(false);
+
     const priceChangeStyleValue = priceChangeStyle(props.percentageChange);
     return (
         <div className="company-row">
@@ -25,7 +29,22 @@ function CompanyDataRow(props) {
 
             <BuySellButton type="buy" company={props.company}/>
             <BuySellButton type="sell" company={props.company}/>
-            <AddToWatchlist company={props.company} index={props.index}/>
+            <div className="watchlist">
+                <img 
+                    className="watchlist-button" 
+                    width="30px" 
+                    src= {addImage} 
+                    alt="Add"
+                    onClick={() => setAddToWatchlistModal(true)}
+                />
+
+                {
+                    addToWatchlistModal &&  <AddToWatchlistModal 
+                                                setAddToWatchlistModal={setAddToWatchlistModal}
+                                                company={props.company}
+                                            />
+                }
+            </div>
         </div>
     )
 }

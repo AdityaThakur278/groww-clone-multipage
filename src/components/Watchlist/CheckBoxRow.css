@@ -1,0 +1,15 @@
+.add-to-watchlist-modal .check-box-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    text-align: center;
+}
+
+.add-to-watchlist-modal .check-box-input {
+    width: 30%;
+}
+
+.add-to-watchlist-modal .check-box-watchlist-name {
+    width: 70%;
+}
