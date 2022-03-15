@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { updateCompanyProfitLoss } from "../../Redux/assets/assetsActions"
-import addImage from "../../images/add.png"
+import { updateCompanyProfitLoss } from "../../Actions/assetsActions"
 import "./AssetRow.css"
 import AddToWatchlistModal from '../Watchlist/AddToWatchlistModal';
 
@@ -44,7 +43,7 @@ function AssetRow(props) {
                 <img 
                     className="watchlist-button" 
                     width="30px" 
-                    src= {addImage} 
+                    src= {process.env.PUBLIC_URL + "/images/add.png"} 
                     alt="Add"
                     onClick={() => setAddToWatchlistModal(true)}
                 />

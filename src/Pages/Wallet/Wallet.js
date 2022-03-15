@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import "./WalletModel.css"
-import { addToWallet, withdrawFromWallet } from "../../Redux/wallet/walletActions"
+import "./Wallet.css"
+import { addToWallet, withdrawFromWallet } from "../../Actions/walletActions"
 
 function WalletModel(props) {
 

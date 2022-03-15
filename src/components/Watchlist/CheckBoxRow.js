@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
-import { addCompanyToWatchlist, removeCompanyFromWatchlist } from '../../Redux/watchlist/watchlistActions';
+import { addCompanyToWatchlist, removeCompanyFromWatchlist } from '../../Actions/watchlistActions';
 import "./CheckBoxRow.css"
 
 function CheckBoxRow(props) {

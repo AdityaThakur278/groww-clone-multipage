@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import "./TransactionRow.css"
-import { deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks, addToTransactions } from "../../Redux/transaction/transactionAction"
-import { buySellCompanyChange, marketPriceValueChange, buyTabChange, shareQuantityValueChange, targetPriceChange } from "../../Redux/buySellForm/buySellAction"
-import { addToBlockedTransaction } from "../../Redux/transaction/transactionAction"
+import { deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks, addToTransactions } from "../../Actions/transactionAction"
+import { buySellCompanyChange, marketPriceValueChange, buyTabChange, shareQuantityValueChange, targetPriceChange } from "../../Actions/buySellAction"
+import { addToBlockedTransaction } from "../../Actions/transactionAction"
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
 import ModifyModal from './ModifyModal';

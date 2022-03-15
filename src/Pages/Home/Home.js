@@ -1,9 +1,9 @@
 import React from "react";
-import BuySellForm from "../BuySellForm/BuySellForm";
-import CompanyDataTable from "./CompanyDataTable";
+import BuySellForm from "../../components/BuySellForm/BuySellForm";
+import CompanyDataTable from "../../components/Home/CompanyDataTable";
 import "./Home.css"
 
-function Home(props) {
+function Home() {
     return (
 		<div className="home-page">
 			<div className="stock-data-area">

@@ -5,8 +5,8 @@ import BuySellPrice from './BuySellPrice'
 import BuySellQuantity from './BuySellQuantity'
 import BuySellTargetPrice from './BuySellTargetPrice'
 import BuySellTransaction from './BuySellTransaction'
-import {buyTabChange} from "../../Redux/buySellForm/buySellAction"
-import { removeFromBlockedTransaction } from "../../Redux/transaction/transactionAction"
+import {buyTabChange} from "../../Actions/buySellAction"
+import { removeFromBlockedTransaction } from "../../Actions/transactionAction"
 
 import ModifyBuySellTransaction from '../Transactions/ModifyBuySellTransaction'
 

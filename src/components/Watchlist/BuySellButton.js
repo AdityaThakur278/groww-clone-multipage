@@ -1,6 +1,6 @@
 import React from 'react'
 import "./BuySellButton.css"
-import {buySellCompanyChange, buyTabChange, marketPriceValueChange} from "../../Redux/buySellForm/buySellAction"
+import {buySellCompanyChange, buyTabChange, marketPriceValueChange} from "../../Actions/buySellAction"
 import { connect } from 'react-redux';
 
 const getCompanyIndex = (stocksData, company) => {

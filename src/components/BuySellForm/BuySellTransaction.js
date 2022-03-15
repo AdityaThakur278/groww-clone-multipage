@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import "./BuySellTransaction.css"
-import {addToTransactions, addToPendingBlockedAmount, addToPendingBlockedStocks} from "../../Redux/transaction/transactionAction"
+import {addToTransactions, addToPendingBlockedAmount, addToPendingBlockedStocks} from "../../Actions/transactionAction"
 import { v4 } from "uuid";
  
 function BuySellTransaction(props) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import "./BuySellQuantity.css"
-import {shareQuantityValueChange} from "../../Redux/buySellForm/buySellAction"
+import {shareQuantityValueChange} from "../../Actions/buySellAction"
 import { connect } from 'react-redux'
 
 function BuySellQuantity(props) {

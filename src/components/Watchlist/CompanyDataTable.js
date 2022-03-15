@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import CompanyDataRow from './CompanyDataRow';
-import { deleteWatchlist, renameWatchlist } from "../../Redux/watchlist/watchlistActions"
+import { deleteWatchlist, renameWatchlist } from "../../Actions/watchlistActions"
 import "./CompanyDataTable.css"
 
 function CompanyDataTable(props) {

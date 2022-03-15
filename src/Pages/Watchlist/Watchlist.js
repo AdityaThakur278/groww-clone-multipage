@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import BuySellForm from '../BuySellForm/BuySellForm';
-import WatchlistInput from './WatchlistInput';
-import CompanyDataTable from './CompanyDataTable';
+import BuySellForm from '../../components/BuySellForm/BuySellForm';
+import WatchlistInput from '../../components/Watchlist/WatchlistInput';
+import CompanyDataTable from '../../components/Watchlist/CompanyDataTable';
 import "./Watchlist.css"
 
 function Watchlist(props) {

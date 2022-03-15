@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import BuySellButton from '../Watchlist/BuySellButton';
-import addImage from "../../images/add.png"
 import "./CompanyDataRow.css"
 import AddToWatchlistModal from '../Watchlist/AddToWatchlistModal';
 
@@ -33,7 +32,7 @@ function CompanyDataRow(props) {
                 <img 
                     className="watchlist-button" 
                     width="30px" 
-                    src= {addImage} 
+                    src= {process.env.PUBLIC_URL + "/images/add.png"} 
                     alt="Add"
                     onClick={() => setAddToWatchlistModal(true)}
                 />

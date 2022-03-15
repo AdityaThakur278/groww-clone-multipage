@@ -1,6 +1,6 @@
 import React from 'react'
 import "./BuySellTargetPrice.css"
-import {targetPriceChange} from "../../Redux/buySellForm/buySellAction"
+import {targetPriceChange} from "../../Actions/buySellAction"
 import { connect } from 'react-redux'
 
 function BuySellTargetPrice(props) {

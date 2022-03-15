@@ -1,7 +1,6 @@
 import React from 'react'
-import deleteImage from "../../images/delete.png"
 import "./RemoveFromWatchlist.css"
-import { removeCompanyFromWatchlist, } from "../../Redux/watchlist/watchlistActions"
+import { removeCompanyFromWatchlist, } from "../../Actions/watchlistActions"
 import { connect } from 'react-redux'
 
 function RemoveFromWatchlist(props) {
@@ -9,7 +8,7 @@ function RemoveFromWatchlist(props) {
         <p className="remove">
             <img 
                 className="delete-button"
-                src={deleteImage}
+                src={process.env.PUBLIC_URL + "/images/delete.png"}
                 width="30px"
                 alt="delete"
                 onClick={() => props.removeCompanyFromWatchlist(props.watchlistID, props.company)}

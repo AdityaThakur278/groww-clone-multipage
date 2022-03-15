@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import "./NavBar.css"
-import { fetchStockData, updateStockData } from "../../Redux/stockData/stockDataAction";
 import { connect } from 'react-redux';
-import { checkPendingTransactions } from '../checkPendingTransactions';
-import { addToTransactions, deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks } from "../../Redux/transaction/transactionAction"
-import { addToAssets, substractFromAssets } from "../../Redux/assets/assetsActions"
-import { addToWallet, withdrawFromWallet } from "../../Redux/wallet/walletActions"
-import WalletModel from './WalletModel';
+import { checkPendingTransactions } from './NavBar.helper';
+import { addToTransactions, deletePendingTransaction, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks } from "../../Actions/transactionAction"
+import { addToAssets, substractFromAssets } from "../../Actions/assetsActions"
+import { addToWallet, withdrawFromWallet } from "../../Actions/walletActions"
+import WalletModel from '../../Pages/Wallet/Wallet';
+import { fetchStockData, updateStockData } from '../../Actions/stockDataAction';
 
 function NavBar(props) {
 
@@ -67,7 +67,7 @@ function NavBar(props) {
                     className="element element-hover"
                     onClick={() => {setWalletModel(true); setAddTab(true); setWithdrawTab(false)}}
                 >
-                    Funds
+                    Wallet
                 </div>
 
                 {walletModel && <WalletModel

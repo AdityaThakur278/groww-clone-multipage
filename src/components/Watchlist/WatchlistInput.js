@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { createWatchlist } from "../../Redux/watchlist/watchlistActions"
+import { createWatchlist } from "../../Actions/watchlistActions"
 import { v4 } from 'uuid';
 import "./WatchlistInput.css"
 

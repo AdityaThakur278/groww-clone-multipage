@@ -1,6 +1,6 @@
 import React from 'react'
 import "./ModifyBuySellTransaction.css"
-import { addToTransactions, addToPendingBlockedAmount, addToPendingBlockedStocks, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks, removeFromBlockedTransaction, modifyPendingTransaction } from "../../Redux/transaction/transactionAction"
+import { addToTransactions, addToPendingBlockedAmount, addToPendingBlockedStocks, substractFromPendingBlockedAmount, substractFromPendingBlockedStocks, removeFromBlockedTransaction, modifyPendingTransaction } from "../../Actions/transactionAction"
 import { connect } from 'react-redux'
 
 function ModifyBuySellTransaction(props) {

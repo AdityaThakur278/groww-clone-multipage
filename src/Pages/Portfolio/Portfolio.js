@@ -1,6 +1,6 @@
 import React from 'react'
-import AssetTable from './AssetTable'
-import InvestmentDetails from './InvestmentDetails'
+import AssetTable from '../../components/Portfolio/AssetTable'
+import InvestmentDetails from '../../components/Portfolio/InvestmentDetails'
 import "./Portfolio.css"
 
 function Portfolio() {
