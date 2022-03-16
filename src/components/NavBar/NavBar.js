@@ -8,12 +8,14 @@ import { addToAssets, substractFromAssets } from "../../Actions/assetsActions"
 import { addToWallet, withdrawFromWallet } from "../../Actions/walletActions"
 import WalletModel from '../../Pages/Wallet/Wallet';
 import { fetchStockData, updateStockData } from '../../Actions/stockDataAction';
+import { useAuth } from '../../utils/auth';
 
 function NavBar(props) {
 
     const [walletModel, setWalletModel] = useState(false);
     const [addTab, setAddTab] = useState(false);
     const [withdrawTab, setWithdrawTab] = useState(false);
+    const [dropDown, setDropDown] = useState(false);
 
     // Fetching data here to solve re-rendering issue
     // Call fetchStockData on 1st render, then updateStockData on further renders
@@ -53,30 +55,45 @@ function NavBar(props) {
         }
     }
 
+    const auth = useAuth();
+    const avatarText = auth.user.firstName.charAt(0).toUpperCase() + auth.user.lastName.charAt(0).toUpperCase();
+
     return (
         <nav className="navbar">
             <div className='groww-name'>
                 <NavLink style={{color: "#00d09c", fontWeight: "bold"}} className="element" to="/">Groww</NavLink>
             </div>
-            <div className='remaining-element'>
-                <NavLink style={navLinkStyle} className="element" to="/">Home</NavLink>
-                <NavLink style={navLinkStyle} className="element" to="/watchlist">Watchlist</NavLink>
-                <NavLink style={navLinkStyle} className="element" to="/transactions">Transactions</NavLink>
-                <NavLink style={navLinkStyle} className="element" to="/portfolio">Portfolio</NavLink>
-                <div 
-                    className="element element-hover"
-                    onClick={() => {setWalletModel(true); setAddTab(true); setWithdrawTab(false)}}
-                >
-                    Wallet
-                </div>
+            <div className='remaining-element-wrapper'>
+                <div className='remaining-element'>
+                    <NavLink style={navLinkStyle} className="element" to="/">Home</NavLink>
+                    <NavLink style={navLinkStyle} className="element" to="/watchlist">Watchlist</NavLink>
+                    <NavLink style={navLinkStyle} className="element" to="/transactions">Transactions</NavLink>
+                    <NavLink style={navLinkStyle} className="element" to="/portfolio">Portfolio</NavLink>
+                    <div 
+                        className="element element-hover"
+                        onClick={() => {setWalletModel(true); setAddTab(true); setWithdrawTab(false)}}
+                    >
+                        Wallet
+                    </div>
 
-                {walletModel && <WalletModel
-                                    addTab = {addTab}
-                                    withdrawTab = {withdrawTab}
-                                    setWalletModel = {setWalletModel}
-                                    setAddTab = {setAddTab}
-                                    setWithdrawTab = {setWithdrawTab}
-                                />}
+                    {walletModel && <WalletModel
+                                        addTab = {addTab}
+                                        withdrawTab = {withdrawTab}
+                                        setWalletModel = {setWalletModel}
+                                        setAddTab = {setAddTab}
+                                        setWithdrawTab = {setWithdrawTab}
+                                    />}
+                </div>
+                
+                <div className="avatar-wrapper">
+                    <div className="element avatar" onClick={() => setDropDown(prev => !prev)}>
+                        {avatarText}
+                    </div>
+                    {dropDown && <div className="drop-down-list">
+                        <p className="drop-down-item">Profile</p>
+                        <p className="drop-down-item" onClick={auth.logout}>Logout</p>
+                    </div>}
+                </div>
             </div>
         </nav>
     );

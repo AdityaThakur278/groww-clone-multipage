@@ -23,27 +23,36 @@ function Login() {
 
     return (
         <div className='login-form'>
-            <div>
-                <label>FirstName</label>
-                <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)}></input>
-            </div>
+            <div className="login-form-container">
+                <div className="company-header">
+                    <img className="company-img" src={process.env.PUBLIC_URL + "/images/groww.png"} alt="groww" width="50px"></img>
+                    <p className="company-name">GROWW</p>
+                </div>
+                <div className='login-heading'>LOGIN</div>
+                <div className="input-text-value">
+                    <label className="input-text">First Name</label>
+                    <input className="input-value" type="text" value={firstName} onChange={e => setFirstName(e.target.value)}></input>
+                </div>
 
-            <div>
-                <label>LastName</label>
-                <input type="text" value={lastName} onChange={e => setLastName(e.target.value)}></input>
-            </div>
+                <div className="input-text-value">
+                    <label className="input-text">Last Name</label>
+                    <input className="input-value" type="text" value={lastName} onChange={e => setLastName(e.target.value)}></input>
+                </div>
 
-            <div>
-                <label>Email</label>
-                <input type="text" value={email} onChange={e => setEmail(e.target.value)}></input>
-            </div>
+                <div className="input-text-value">
+                    <label className="input-text">Email</label>
+                    <input className="input-value" type="text" value={email} onChange={e => setEmail(e.target.value)}></input>
+                </div>
 
-            <div>
-                <label>Password</label>
-                <input type="text" value={password} onChange={e => setPassword(e.target.value)}></input>
-            </div>
+                <div className="input-text-value">
+                    <label className="input-text">Password</label>
+                    <input className="input-value" type="text" value={password} onChange={e => setPassword(e.target.value)}></input>
+                </div>
 
-            <button onClick={handleLogin}>Login</button>
+                <div className="login-button-wrapper">
+                    <button className="login-button" onClick={handleLogin}>Login</button>
+                </div>
+            </div>
         </div>
     )
 }
