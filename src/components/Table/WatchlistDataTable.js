@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import CompanyDataRow from './CompanyDataRow';
+import CompanyDataRow from '../TableRow/WatchlistDataRow';
 import { deleteWatchlist, renameWatchlist } from "../../Actions/watchlistActions"
-import "./CompanyDataTable.css"
+import "./WatchlistDataTable.css"
 
-function CompanyDataTable(props) {
+function WatchlistDataTable(props) {
 
 	const [watchlistRename, setWatchlistRename] = useState(false);
 	const [watchlistRenameInput, setWatchlistRenameInput] = useState("");
@@ -83,4 +83,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompanyDataTable)
+export default connect(mapStateToProps, mapDispatchToProps)(WatchlistDataTable)

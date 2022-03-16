@@ -1,9 +1,9 @@
 import React from "react";
-import CompanyDataRow from "./CompanyDataRow";
-import "./CompanyDataTable.css";
+import CompanyDataRow from "../TableRow/StockDataRow";
+import "./StockDataTable.css";
 import { connect } from "react-redux";
 
-function CompanyDataTable(props) {
+function StockDataTable(props) {
 	const stocksData = props.stocksData;
 
 	return (
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, null)(CompanyDataTable);
+export default connect(mapStateToProps, null)(StockDataTable);

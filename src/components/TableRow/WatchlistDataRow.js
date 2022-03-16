@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import BuySellButton from './BuySellButton';
-import "./CompanyDataRow.css"
-import RemoveFromWatchlist from './RemoveFromWatchlist';
+import BuySellButton from '../BuySellButton/BuySellButton';
+import "./WatchlistDataRow.css"
+import RemoveFromWatchlist from '../RemoveFromWatchlist/RemoveFromWatchlist';
 
 const getCompanyIndex = (stocksData, company) => {
     for(let i=0; i<stocksData.length; i++) {
@@ -21,7 +21,7 @@ function priceChangeStyle(value) {
     }
 }
 
-function CompanyDataRow(props) {
+function WatchlistDataRow(props) {
     const company = props.company;
     const stocksData = props.stocksData;
     const index = getCompanyIndex(props.stocksData, props.company);
@@ -52,4 +52,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(CompanyDataRow)
+export default connect(mapStateToProps, null)(WatchlistDataRow)

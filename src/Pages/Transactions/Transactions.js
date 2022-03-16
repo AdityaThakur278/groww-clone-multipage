@@ -1,5 +1,5 @@
 import React from 'react'
-import TransactionTable from '../../components/Transactions/TransactionTable'
+import TransactionTable from '../../components/Table/TransactionTable'
 import "./Transactions.css"
 
 function Transantions(props) {

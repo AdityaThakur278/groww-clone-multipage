@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { updateCompanyProfitLoss } from "../../Actions/assetsActions"
 import "./AssetRow.css"
-import AddToWatchlistModal from '../Watchlist/AddToWatchlistModal';
+import AddToWatchlistModal from '../AddToWatchlistModal/AddToWatchlistModal';
 
 const getCompanyIndex = (stocksData, company) => {
     for(let i=0; i<stocksData.length; i++) {

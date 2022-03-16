@@ -8,7 +8,7 @@ import BuySellTransaction from './BuySellTransaction'
 import {buyTabChange} from "../../Actions/buySellAction"
 import { removeFromBlockedTransaction } from "../../Actions/transactionAction"
 
-import ModifyBuySellTransaction from '../Transactions/ModifyBuySellTransaction'
+import ModifyBuySellTransaction from '../ModifyModal/ModifyBuySellTransaction'
 
 function BuySellForm(props) {
     const buyTab = props.buyTab ? "selected" : "";

@@ -5,7 +5,7 @@ import { buySellCompanyChange, marketPriceValueChange, buyTabChange, shareQuanti
 import { addToBlockedTransaction } from "../../Actions/transactionAction"
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
-import ModifyModal from './ModifyModal';
+import ModifyModal from '../ModifyModal/ModifyModal';
 
 const getCompanyIndex = (stocksData, company) => {
     for(let i=0; i<stocksData.length; i++) {

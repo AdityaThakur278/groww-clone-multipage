@@ -1,6 +1,6 @@
 import React from "react";
 import BuySellForm from "../../components/BuySellForm/BuySellForm";
-import CompanyDataTable from "../../components/Home/CompanyDataTable";
+import CompanyDataTable from "../../components/Table/StockDataTable";
 import "./Home.css"
 
 function Home() {

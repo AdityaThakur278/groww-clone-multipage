@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import BuySellButton from '../Watchlist/BuySellButton';
-import "./CompanyDataRow.css"
-import AddToWatchlistModal from '../Watchlist/AddToWatchlistModal';
+import BuySellButton from '../BuySellButton/BuySellButton';
+import "./StockDataRow.css"
+import AddToWatchlistModal from '../AddToWatchlistModal/AddToWatchlistModal';
 
 function priceChangeStyle(value) {
     if(parseFloat(value) < 0) {
@@ -12,7 +12,7 @@ function priceChangeStyle(value) {
     }
 }
 
-function CompanyDataRow(props) {
+function StockDataRow(props) {
 
     const [addToWatchlistModal, setAddToWatchlistModal] = useState(false);
 
@@ -48,4 +48,4 @@ function CompanyDataRow(props) {
     )
 }
 
-export default CompanyDataRow
+export default StockDataRow

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import TransactionRow from './TransactionRow';
+import TransactionRow from '../TableRow/TransactionRow';
 import "./TransactionTable.css"
 
 function TransactionTable(props) {

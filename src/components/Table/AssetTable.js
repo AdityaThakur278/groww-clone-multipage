@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import AssetRow from './AssetRow';
+import AssetRow from '../TableRow/AssetRow';
 import "./AssetTable.css"
 
 function AssetTable(props) {
