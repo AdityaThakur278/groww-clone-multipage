@@ -16,6 +16,10 @@
   border-radius: 5px;
 }
 
+.create-watchlist-name:hover {
+  transform: scale(1.02);
+}
+
 .create-watchlist-input {
   background-color: white;
   box-shadow: 1px 1px 3px 3px #e6e6e6;
@@ -50,6 +54,10 @@
   cursor: pointer;
 }
 
+.watchlist-add-button:hover {
+  transform: scale(1.02);
+}
+
 .watchlist-cancel-button {
   width: 20%;
   margin-left: 5%;
@@ -61,4 +69,8 @@
   border-radius: 5px;
   padding: 2% 0;
   cursor: pointer;
+}
+
+.watchlist-cancel-button:hover {
+  transform: scale(1.02);
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import BuySellForm from '../../components/BuySellForm/BuySellForm';
 import WatchlistInput from '../../components/WatchlistInput/WatchlistInput';
-import CompanyDataTable from '../../components/Table/WatchlistDataTable';
+import WatchlistDataTable from '../../components/Table/WatchlistDataTable';
 import "./Watchlist.css"
 
 function Watchlist(props) {
@@ -12,7 +12,7 @@ function Watchlist(props) {
 				{
 					props.watchlistID.length === 0 
 					? <div className="no-watchlist">No Watchlist Available</div>
-					: props.watchlistID.map(id => <CompanyDataTable key={id} id={id}/>)
+					: props.watchlistID.map(id => <WatchlistDataTable key={id} id={id}/>)
 				}
 			</div>
 			<div className="buy-sell-form-area">

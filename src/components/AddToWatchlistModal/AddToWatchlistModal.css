@@ -1,38 +1,105 @@
 .add-to-watchlist-modal {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(128,128,128, 0.5);
-    z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(128, 128, 128, 0.5);
+  z-index: 1;
 }
 
 .add-to-watchlist-modal .add-to-watchlist-container {
-    background-color: white;
-    font-size: 1.3rem;
-    width: 20rem;
-    box-shadow: 1px 1px 3px 3px #e6e6e6;
+  background-color: white;
+  font-size: 1.3rem;
+  width: 20rem;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
 }
 
 .add-to-watchlist-modal .titleCloseBtn {
-    padding: 4%;
-    background-color: #e5faf5;
-    display: flex;
-    justify-content: space-between;
+  padding: 4%;
+  background-color: #e5faf5;
+  display: flex;
+  justify-content: space-between;
 }
 
 .add-to-watchlist-modal .cross-button {
-    background-color: transparent;
-    border: none;
-    font-size: 22px;
-    font-weight: 700;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .add-to-watchlist-modal .no-watchlist {
-    padding: 3%;
+  padding: 3%;
+}
+
+.add-to-watchlist-modal .create-watchlist-wrapper {
+  text-align: center;
+  margin: 3% 5%;
+}
+
+.add-to-watchlist-modal .create-watchlist-button {
+  margin: 3% 0 5% 0;
+  border: none;
+  background-color: #00d09c;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border-radius: 5px;
+  padding: 2.5% 3%;
+  cursor: pointer;
+}
+
+.add-to-watchlist-modal .create-watchlist-button:hover {
+  transform: scale(1.02);
+}
+
+.add-to-watchlist-modal .new-watchlist-input {
+    width: 70%;
+    border: none;
+    height: 1.8rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    color: #00d09c;
+    background-color: #e5faf5;
+    font-weight: 700;
+    padding-left: 3%;
+}
+
+.add-to-watchlist-modal .new-watchlist-input:focus {
+    outline: none;
+}
+
+.add-to-watchlist-modal .add-button-watchlist {
+    margin: 5% 5% 2% 2%;
+    background-color: #00d09c;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.add-to-watchlist-modal .cancel-button-watchlist {
+    margin: 5% 5% 2% 2%;
+    background-color: #e34234;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.add-to-watchlist-modal .add-button-watchlist:hover, .add-to-watchlist-modal .cancel-button-watchlist:hover {
+    transform: scale(1.03);
 }

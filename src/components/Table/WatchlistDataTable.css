@@ -78,6 +78,10 @@
     cursor: pointer;
   }
 
+  .watchlist-page .watchlist-rename-button:hover {
+    transform: scale(1.03);
+  }
+
   .watchlist-page .watchlist-delete-button {
     background-color: #e34234;
     border: none;
@@ -87,6 +91,10 @@
     border-radius: 5px;
     padding: 4%;
     cursor: pointer;
+  }
+
+  .watchlist-page .watchlist-delete-button:hover {
+    transform: scale(1.03);
   }
 
   .watchlist-page .watchlist-rename-container {
