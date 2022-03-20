@@ -7,16 +7,21 @@ import Watchlist from "./Pages/Watchlist/Watchlist";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import Transantions from "./Pages/Transactions/Transactions";
 import NavBar from "./components/NavBar/NavBar";
+import Login from './components/Login/Login';
+import { useAuth } from './utils/auth';
+import RequireAuth from './utils/RequireAuth';
 
 function AppNavigator() {
+    const auth = useAuth();
     return (
         <BrowserRouter>
-          <NavBar />
+            {auth.user && <NavBar />}
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/transactions" element={<Transantions />} />
-                <Route path="/watchlist" element={<Watchlist />} />
-                <Route path="/portfolio" element={<Portfolio />} />
+                <Route path="/" element={<RequireAuth> <Home /> </RequireAuth>} />
+                <Route path="/transactions" element={<RequireAuth> <Transantions /> </RequireAuth>} />
+                <Route path="/watchlist" element={<RequireAuth> <Watchlist /> </RequireAuth> } />
+                <Route path="/portfolio" element={<RequireAuth> <Portfolio /> </RequireAuth>} />
+                <Route path="/login" element={<Login />} />
                 <Route path="*" element={<NoMatch />} />
             </Routes>
         </BrowserRouter>

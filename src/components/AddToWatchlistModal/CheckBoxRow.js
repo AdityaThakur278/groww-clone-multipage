@@ -38,7 +38,7 @@ function CheckBoxRow(props) {
         setIsChecked(event.target.value === "true" ? false : true);
 
         /*
-        // Not working
+        // Giving warning
         setIsChecked((prev) => {
             if(prev) {
                 props.removeCompanyFromWatchlist(props.watchlistID, props.company);
