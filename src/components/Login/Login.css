@@ -1,0 +1,85 @@
+.login-form {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form .login-form-container {
+  padding: 2%;
+  width: 30%;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.login-form .login-heading {
+  font-size: 1.4rem;
+  text-align: center;
+  padding-bottom: 4%;
+  font-weight: 700;
+  color: #00d09c;
+  letter-spacing: 3px;
+}
+
+.login-form .input-text-value {
+  padding: 3%;
+  display: flex;
+  align-items: center;
+}
+
+.login-form .input-text {
+  width: 40%;
+}
+
+.login-form .input-value {
+  width: 60%;
+  border: none;
+  background-color: #e5faf5;
+  height: 2.2rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: #00d09c;
+  font-weight: 700;
+  padding-left: 2%;
+}
+
+.login-form .input-value:focus {
+  outline: none;
+}
+
+.login-form .company-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 13%;
+}
+
+.login-form .company-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-left: 2%;
+  letter-spacing: 3px;
+  color: #00d09c;
+}
+
+.login-form .login-button-wrapper {
+  text-align: center;
+}
+
+.login-form .login-button {
+  border: none;
+  background-color: #00d09c;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border-radius: 5px;
+  margin: 4% 0;
+  width: 80%;
+  padding: 2.5% 0;
+  cursor: pointer;
+}
+
+.login-form .login-button:hover {
+  transform: scale(1.02);
+}

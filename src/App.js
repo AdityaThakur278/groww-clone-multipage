@@ -3,11 +3,14 @@ import "./App.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import AppNavigator from "./AppNavigator";
+import { AuthProvider } from "./utils/auth";
 
 function App() {
   return (
 	<Provider store={store}>
-		<AppNavigator/>
+		<AuthProvider>
+			<AppNavigator/>
+		</AuthProvider>
 	</Provider>
   );
 }
