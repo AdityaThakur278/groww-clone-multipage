@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import "./BuySellPrice.css"
 
 function BuySellPrice(props) {
-    const marketPrice = props.marketPrice ? "₹" + props.marketPrice : "NULL";
+    const marketPrice = props.marketPrice ? "₹" + props.marketPrice : "₹0.0";
     return (
         <div className="buy-sell-price">
             <p className="buy-sell-price-text">Market Price</p>

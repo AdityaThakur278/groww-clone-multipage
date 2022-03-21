@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import "./NavBar.css"
 import { connect } from 'react-redux';
 import { checkPendingTransactions } from './NavBar.helper';
@@ -55,8 +55,14 @@ function NavBar(props) {
         }
     }
 
+    const navigate = useNavigate();
+    function handleNavigateToProfile() {
+        setDropDown(false)
+        navigate("/profile")
+    }
+
     const auth = useAuth();
-    const avatarText = auth.user.firstName.charAt(0).toUpperCase() + auth.user.lastName.charAt(0).toUpperCase();
+    const avatarText = auth.user.userName.charAt(0).toUpperCase();
 
     return (
         <nav className="navbar">
@@ -90,7 +96,7 @@ function NavBar(props) {
                         {avatarText}
                     </div>
                     {dropDown && <div className="drop-down-list">
-                        <p className="drop-down-item">Profile</p>
+                        <p className="drop-down-item" onClick={handleNavigateToProfile}>Profile</p>
                         <p className="drop-down-item" onClick={auth.logout}>Logout</p>
                     </div>}
                 </div>

@@ -1,0 +1,70 @@
+.profile-page {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
+
+.profile-page .profile-page-details {
+  padding: 2%;
+  width: 45%;
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.profile-page .update-heading {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 4%;
+  font-weight: 700;
+  color: #00d09c;
+  letter-spacing: 3px;
+}
+
+.profile-page .input-text-value {
+  padding: 3%;
+  display: flex;
+  align-items: center;
+}
+
+.profile-page .input-text {
+  width: 40%;
+}
+
+.profile-page .input-value {
+  width: 60%;
+  border: none;
+  background-color: #e5faf5;
+  height: 2.2rem;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  color: #00d09c;
+  font-weight: 700;
+  padding-left: 2%;
+}
+
+.profile-page .input-value:focus {
+  outline: none;
+}
+
+.profile-page .login-button-wrapper {
+  text-align: center;
+}
+
+.profile-page .login-button {
+  border: none;
+  background-color: #00d09c;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border-radius: 5px;
+  margin: 6% 0 4% 0;
+  width: 80%;
+  padding: 2.5% 0;
+  cursor: pointer;
+}
+
+.profile-page .login-button:hover {
+  transform: scale(1.02);
+}

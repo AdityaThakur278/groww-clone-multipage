@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #44475b;
 }
 
 .login-form .login-form-container {
@@ -12,13 +13,19 @@
   box-shadow: 1px 1px 3px 3px #e6e6e6;
 }
 
-.login-form .login-heading {
-  font-size: 1.4rem;
-  text-align: center;
-  padding-bottom: 4%;
+.login-form .signin-signup-wrapper {
+  display: flex;
+}
+
+.login-form .signin-signup {
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #00d09c;
-  letter-spacing: 3px;
+  margin: 3%;
+  padding-bottom: 1%;
+}
+
+.login-form .selected {
+  border-bottom: 3.5px solid #00d09c;
 }
 
 .login-form .input-text-value {
@@ -51,7 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 13%;
+  padding-bottom: 7%;
 }
 
 .login-form .company-name {

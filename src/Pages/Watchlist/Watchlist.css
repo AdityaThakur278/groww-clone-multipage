@@ -7,11 +7,12 @@
 }
 
 .watchlist-page .stock-data-area {
+    margin-top: 3%;
     width: 60%;
 }
 
 .watchlist-page .buy-sell-form-area {
-    padding-top: 5%;
+    padding-top: 4%;
     width: 35%;
 }
 
@@ -23,6 +24,20 @@
 .watchlist-page .no-watchlist {
     box-shadow: 1px 1px 3px 3px #e6e6e6;
     padding: 3%;
-    margin-top: 8%;
+    margin-top: 2%;
     font-size: 1.5rem;
 }
+
+.watchlist-page .select-tab {
+    padding: 0.7% 0 0.7% 1.5%;
+    width: 50%;
+    margin: auto;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: #e5faf5;
+    border-color: #00bdb1;
+}
+
+.watchlist-page .select-tab:focus {
+    outline: none;
+}   

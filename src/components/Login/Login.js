@@ -4,11 +4,10 @@ import { useAuth } from '../../utils/auth';
 import "./Login.css"
 
 function Login() {
-
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [signupTab, setSignupTab] = useState(false)
 
     const auth = useAuth();
     const navigate = useNavigate();
@@ -17,8 +16,14 @@ function Login() {
     const redirectPath = location.state?.path || "/";
 
     function handleLogin() {
-        auth.login({firstName, lastName, email, password});
-        navigate(redirectPath, { replace: true })
+        if(signupTab) {
+            auth.signup({userName, email, password})
+            navigate(redirectPath, { replace: true })
+        }
+        else {
+            auth.signin({userName, password})
+            navigate(redirectPath, { replace: true })
+        }
     }
 
     return (
@@ -28,21 +33,24 @@ function Login() {
                     <img className="company-img" src={process.env.PUBLIC_URL + "/images/groww.png"} alt="groww" width="50px"></img>
                     <p className="company-name">GROWW</p>
                 </div>
-                <div className='login-heading'>LOGIN</div>
-                <div className="input-text-value">
-                    <label className="input-text">First Name</label>
-                    <input className="input-value" type="text" value={firstName} onChange={e => setFirstName(e.target.value)}></input>
+
+                <div className="signin-signup-wrapper">
+                    <div className={"signin-signup " + (signupTab ? "" : "selected")} onClick={() => setSignupTab(false)}>SIGNIN</div>
+                    <div className={"signin-signup " + (signupTab ? "selected" : "")} onClick={() => setSignupTab(true)}>SIGNUP</div>
                 </div>
 
                 <div className="input-text-value">
-                    <label className="input-text">Last Name</label>
-                    <input className="input-value" type="text" value={lastName} onChange={e => setLastName(e.target.value)}></input>
+                    <label className="input-text">Username</label>
+                    <input className="input-value" type="text" value={userName} onChange={e => setUserName(e.target.value)}></input>
                 </div>
 
-                <div className="input-text-value">
-                    <label className="input-text">Email</label>
-                    <input className="input-value" type="text" value={email} onChange={e => setEmail(e.target.value)}></input>
-                </div>
+                {
+                    signupTab 
+                    && (<div className="input-text-value">
+                        <label className="input-text">Email</label>
+                        <input className="input-value" type="text" value={email} onChange={e => setEmail(e.target.value)}></input>
+                    </div>)
+                }
 
                 <div className="input-text-value">
                     <label className="input-text">Password</label>
@@ -50,7 +58,7 @@ function Login() {
                 </div>
 
                 <div className="login-button-wrapper">
-                    <button className="login-button" onClick={handleLogin}>Login</button>
+                    <button className="login-button" onClick={handleLogin}>{signupTab ? "SIGNUP" : "SIGNIN"}</button>
                 </div>
             </div>
         </div>

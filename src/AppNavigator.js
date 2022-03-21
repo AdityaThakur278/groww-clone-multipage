@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Login from './components/Login/Login';
 import { useAuth } from './utils/auth';
 import RequireAuth from './utils/RequireAuth';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 function AppNavigator() {
     const auth = useAuth();
@@ -21,6 +22,7 @@ function AppNavigator() {
                 <Route path="/transactions" element={<RequireAuth> <Transantions /> </RequireAuth>} />
                 <Route path="/watchlist" element={<RequireAuth> <Watchlist /> </RequireAuth> } />
                 <Route path="/portfolio" element={<RequireAuth> <Portfolio /> </RequireAuth>} />
+                <Route path="/profile" element={<RequireAuth> <ProfilePage /> </RequireAuth>} />
                 <Route path="/login" element={<Login />} />
                 <Route path="*" element={<NoMatch />} />
             </Routes>
