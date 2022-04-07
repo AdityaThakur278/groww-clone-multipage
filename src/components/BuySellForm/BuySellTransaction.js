@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import "./BuySellTransaction.css"
 import {addToTransactions, addToPendingBlockedAmount, addToPendingBlockedStocks} from "../../Actions/transactionAction"
+import { numberRegex } from '../../utils/regex'
 import { v4 } from "uuid";
  
 function BuySellTransaction(props) {
@@ -66,6 +67,21 @@ function BuySellTransaction(props) {
     }
 
     function buySellTransaction() {
+
+        if(numberRegex(props.shareQuantity)) {
+            alert("Enter proper share quantity value!")
+            return;
+        }
+
+        // if(!Number.isInteger(props.shareQuantity)) {
+        //     alert("Share quantity can't be fractional!")
+        //     return;
+        // }
+
+        if(numberRegex(props.targetPrice)) {
+            alert("Enter proper target price value!")
+            return;
+        }
 
         if(props.buySellCompany === "Select Company") return;
 

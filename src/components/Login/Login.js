@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../utils/auth';
+import { usernameRegex, emailRegex, passwordRegex  } from '../../utils/regex';
 import "./Login.css"
 
 function Login() {
@@ -17,10 +18,34 @@ function Login() {
 
     function handleLogin() {
         if(signupTab) {
+            if(usernameRegex(userName)) {
+                alert("Enter proper Username!")
+                return;
+            }
+
+            if(emailRegex(email)) {
+                alert("Enter proper Email!")
+                return;
+            }
+
+            if(passwordRegex(password)) {
+                alert("Enter proper Password!")
+                return;
+            }
+
             auth.signup({userName, email, password})
             navigate(redirectPath, { replace: true })
         }
         else {
+            if(usernameRegex(userName)) {
+                alert("Enter proper Username!")
+                return;
+            }
+
+            if(passwordRegex(password)) {
+                alert("Enter proper Password!")
+                return;
+            }
             auth.signin({userName, password})
             navigate(redirectPath, { replace: true })
         }
@@ -54,7 +79,7 @@ function Login() {
 
                 <div className="input-text-value">
                     <label className="input-text">Password</label>
-                    <input className="input-value" type="text" value={password} onChange={e => setPassword(e.target.value)}></input>
+                    <input type="password" className="input-value" value={password} onChange={e => setPassword(e.target.value)}></input>
                 </div>
 
                 <div className="login-button-wrapper">

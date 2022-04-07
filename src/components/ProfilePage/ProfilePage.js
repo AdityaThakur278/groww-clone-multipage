@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../utils/auth'
+import { usernameRegex, emailRegex, passwordRegex  } from '../../utils/regex';
 import "./ProfilePage.css"
 
 function ProfilePage() {
@@ -9,6 +10,21 @@ function ProfilePage() {
     const [password, setPassword] = useState(auth.user.password);
 
     function handleSave() {
+        if(usernameRegex(userName)) {
+            alert("Enter proper Username!")
+            return;
+        }
+
+        if(emailRegex(email)) {
+            alert("Enter proper Email!")
+            return;
+        }
+
+        if(passwordRegex(password)) {
+            alert("Enter proper Password!")
+            return;
+        }
+        
         auth.signup({userName, email, password});
         alert("Details Updated!");
     }
