@@ -5,4 +5,4 @@ Due to unavailability of proper API’s,  we are using a mock data(public/mock/i
 
 All the basic functionalities of a trading platform are implemented like Watchlist, Transactions, Portfolio, Wallet, etc.
 
-## Link - https://adityathakur278.github.io/Groww-Clone/
+## Link - https://adityathakur278.github.io/groww-clone-multipage/
