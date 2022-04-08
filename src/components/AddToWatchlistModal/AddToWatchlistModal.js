@@ -11,6 +11,15 @@ function AddToWatchlistModal(props) {
     const [watchlistName, setWatchlistName] = useState("");
 
     function handleAddToWatchlist() {
+        if(watchlistName === "") {
+            alert("Watchlist name can't be empty!")
+            return;
+        }
+        if(watchlistName.length > 30) {
+            alert("Watchlist name length should be less than 31")
+            return;
+        }
+
         const newId = v4();
         props.createWatchlist(newId, watchlistName);
         setWatchlistInputButton(true);

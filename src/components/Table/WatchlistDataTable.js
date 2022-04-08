@@ -20,6 +20,15 @@ function WatchlistDataTable(props) {
 	}
 
 	function handleRenameConfirm() {
+		if(watchlistRenameInput === "") {
+            alert("Watchlist name can't be empty!")
+            return;
+        }
+		if(watchlistRenameInput.length > 30) {
+            alert("Watchlist name length should be less than 31")
+            return;
+        }
+
 		props.renameWatchlist(props.id, watchlistRenameInput);
 		alert("Watchlist Renamed!");
 		setWatchlistRename(false)
