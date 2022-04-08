@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import NoMatch from "./components/NoMatch";
 import Watchlist from "./Pages/Watchlist/Watchlist";
@@ -15,7 +15,8 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 function AppNavigator() {
     const auth = useAuth();
     return (
-        <BrowserRouter>
+        // Using HashRouter instead of BrowserRouter because of issues in gh-pages while deploying
+        <HashRouter> 
             {auth.user && <NavBar />}
             <Routes>
                 <Route path="/" element={<RequireAuth> <Home /> </RequireAuth>} />
@@ -26,7 +27,7 @@ function AppNavigator() {
                 <Route path="/login" element={<Login />} />
                 <Route path="*" element={<NoMatch />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
