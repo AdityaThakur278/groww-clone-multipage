@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/groww-clone-multipage/static/css/main.c80c4782.css",
-    "main.js": "/groww-clone-multipage/static/js/main.33580a7e.js",
+    "main.js": "/groww-clone-multipage/static/js/main.01b9a5ab.js",
     "index.html": "/groww-clone-multipage/index.html",
     "main.c80c4782.css.map": "/groww-clone-multipage/static/css/main.c80c4782.css.map",
-    "main.33580a7e.js.map": "/groww-clone-multipage/static/js/main.33580a7e.js.map"
+    "main.01b9a5ab.js.map": "/groww-clone-multipage/static/js/main.01b9a5ab.js.map"
   },
   "entrypoints": [
     "static/css/main.c80c4782.css",
-    "static/js/main.33580a7e.js"
+    "static/js/main.01b9a5ab.js"
   ]
 }
